@@ -1,6 +1,19 @@
+# System Files
 .DS_Store
-node_modules/
-.env
-*.log
+Thumbs.db
+
+# IDE and Editor Files
 .vscode/
-.idea/ 
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build and Dist Files
+dist/
+build/
+*.log
+.env 

@@ -8,6 +8,129 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Loading Animation */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #2563eb;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #333;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: 250px;
+                background: #ffffff;
+                padding: 2rem;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 998;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        /* Improved Image Loading */
+        .project-image {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .project-image.loaded {
+            opacity: 1;
+        }
+
+        /* Accessibility Improvements */
+        :focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2563eb;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         /* ... existing styles ... */
         .project-card {
             background: #ffffff;
@@ -138,10 +261,21 @@
     </style>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Loading Animation -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header Section -->
     <header>
         <nav>
             <div class="logo">KVD</div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -155,1064 +289,1067 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Krishnavyas Desugari</span></h1>
-            <p class="subtitle">Data & Business Analyst | MS in Information Systems</p>
-            <p class="achievements">🏆 Runner-Up – CSUF Datathon</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Krishnavyas Desugari</span></h1>
+                <p class="subtitle">Data & Business Analyst | MS in Information Systems</p>
+                <p class="achievements">🏆 Runner-Up – CSUF Datathon</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a motivated Data Analytics and Cloud Business Analyst passionate about transforming data into actionable business insights. Currently pursuing my Master's in Information Systems at California State University, Long Beach (CSULB), I combine technical expertise with business strategy to solve complex problems.</p>
-                
-                <p>Through hands-on academic projects and case studies, I have worked on:</p>
-                <ul class="experience-list">
-                    <li>Building interactive data visualizations for decision support</li>
-                    <li>Analyzing big data and ethical AI governance challenges</li>
-                    <li>Simulating cloud ERP migrations and digital transformation strategies</li>
-                    <li>Assessing cybersecurity risks and supply chain resilience</li>
-                </ul>
-
-                <div class="skills">
-                    <h3>Technical Skills</h3>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a motivated Data Analytics and Cloud Business Analyst passionate about transforming data into actionable business insights. Currently pursuing my Master's in Information Systems at California State University, Long Beach (CSULB), I combine technical expertise with business strategy to solve complex problems.</p>
                     
-                    <div class="skills-category">
-                        <h4>Data Science & Analytics</h4>
-                        <div class="skill-tags">
-                            <span>Python</span>
-                            <span>R</span>
-                            <span>Machine Learning</span>
-                            <span>Deep Learning</span>
-                            <span>CNN</span>
-                            <span>RNN</span>
-                            <span>Random Forest</span>
-                            <span>Data Mining</span>
-                            <span>Statistical Analysis</span>
-                            <span>Predictive Analytics</span>
-                            <span>Multivariate Analysis</span>
+                    <p>Through hands-on academic projects and case studies, I have worked on:</p>
+                    <ul class="experience-list">
+                        <li>Building interactive data visualizations for decision support</li>
+                        <li>Analyzing big data and ethical AI governance challenges</li>
+                        <li>Simulating cloud ERP migrations and digital transformation strategies</li>
+                        <li>Assessing cybersecurity risks and supply chain resilience</li>
+                    </ul>
+
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        
+                        <div class="skills-category">
+                            <h4>Data Science & Analytics</h4>
+                            <div class="skill-tags">
+                                <span>Python</span>
+                                <span>R</span>
+                                <span>Machine Learning</span>
+                                <span>Deep Learning</span>
+                                <span>CNN</span>
+                                <span>RNN</span>
+                                <span>Random Forest</span>
+                                <span>Data Mining</span>
+                                <span>Statistical Analysis</span>
+                                <span>Predictive Analytics</span>
+                                <span>Multivariate Analysis</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Data Tools & Visualization</h4>
+                            <div class="skill-tags">
+                                <span>Power BI</span>
+                                <span>Tableau</span>
+                                <span>Alteryx</span>
+                                <span>pandas</span>
+                                <span>scikit-learn</span>
+                                <span>Matplotlib</span>
+                                <span>Seaborn</span>
+                                <span>Prophet</span>
+                                <span>DuckDB</span>
+                                <span>IBM SPSS</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Cloud & Databases</h4>
+                            <div class="skill-tags">
+                                <span>AWS</span>
+                                <span>SQL</span>
+                                <span>MongoDB</span>
+                                <span>Oracle Database</span>
+                                <span>DBMS</span>
+                                <span>ER Modeling</span>
+                                <span>Transaction Management</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Web Development</h4>
+                            <div class="skill-tags">
+                                <span>Django</span>
+                                <span>Selenium</span>
+                                <span>Web Scraping</span>
+                                <span>Automation</span>
+                                <span>SMTP</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Business & Management</h4>
+                            <div class="skill-tags">
+                                <span>Business Analytics</span>
+                                <span>Business Intelligence</span>
+                                <span>Project Management</span>
+                                <span>Agile Methodologies</span>
+                                <span>Supply Chain Management</span>
+                                <span>Operations Management</span>
+                                <span>Business Analysis</span>
+                                <span>Requirements Management</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Engineering & Design</h4>
+                            <div class="skill-tags">
+                                <span>SOLIDWORKS</span>
+                                <span>AutoCAD</span>
+                                <span>Industrial Design</span>
+                                <span>Machine Design</span>
+                                <span>CFD</span>
+                                <span>FEA</span>
+                                <span>Rapid Prototyping</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span>Leadership</span>
+                                <span>Communication</span>
+                                <span>Critical Thinking</span>
+                                <span>Problem Solving</span>
+                                <span>Teamwork</span>
+                                <span>Public Speaking</span>
+                                <span>Negotiation</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="skills-category">
-                        <h4>Data Tools & Visualization</h4>
-                        <div class="skill-tags">
-                            <span>Power BI</span>
-                            <span>Tableau</span>
-                            <span>Alteryx</span>
-                            <span>pandas</span>
-                            <span>scikit-learn</span>
-                            <span>Matplotlib</span>
-                            <span>Seaborn</span>
-                            <span>Prophet</span>
-                            <span>DuckDB</span>
-                            <span>IBM SPSS</span>
+        <!-- Honors & Awards Section -->
+        <section id="honors" class="honors">
+            <h2>Honors & Awards</h2>
+            <div class="honors-grid">
+                <div class="honor-card">
+                    <div class="honor-header">
+                        <div class="honor-title">
+                            <h3>Runner-Up at CSUF Datathon</h3>
+                            <div class="honor-meta">
+                                <span class="honor-issuer">California State University - Fullerton</span>
+                                <span class="honor-date">October 2024</span>
+                            </div>
+                        </div>
+                        <div class="honor-badge">
+                            <i class="fas fa-trophy"></i>
                         </div>
                     </div>
+                    <div class="honor-description">
+                        <p>Achieved Runner-Up position at CSUF Datathon by developing a data-driven solution using Alteryx and Tableau to analyze complex datasets.</p>
+                    </div>
+                    <div class="honor-tags">
+                        <span>Alteryx</span>
+                        <span>Tableau</span>
+                        <span>Data Analysis</span>
+                        <span>Data Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="skills-category">
-                        <h4>Cloud & Databases</h4>
-                        <div class="skill-tags">
+        <!-- Education Section -->
+        <section id="education" class="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-info">
+                        <h3>Master of Science in Information Systems</h3>
+                        <p class="school">California State University-Long Beach - College of Business</p>
+                        <p class="duration">Aug 2023 - May 2025</p>
+                        <p class="grade">GPA: 3.9</p>
+                        <div class="education-skills">
                             <span>AWS</span>
-                            <span>SQL</span>
-                            <span>MongoDB</span>
-                            <span>Oracle Database</span>
-                            <span>DBMS</span>
-                            <span>ER Modeling</span>
-                            <span>Transaction Management</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-category">
-                        <h4>Web Development</h4>
-                        <div class="skill-tags">
-                            <span>Django</span>
-                            <span>Selenium</span>
-                            <span>Web Scraping</span>
-                            <span>Automation</span>
-                            <span>SMTP</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-category">
-                        <h4>Business & Management</h4>
-                        <div class="skill-tags">
+                            <span>SPSS</span>
                             <span>Business Analytics</span>
-                            <span>Business Intelligence</span>
-                            <span>Project Management</span>
-                            <span>Agile Methodologies</span>
-                            <span>Supply Chain Management</span>
-                            <span>Operations Management</span>
-                            <span>Business Analysis</span>
-                            <span>Requirements Management</span>
+                            <span>Python</span>
+                            <span>Django</span>
+                            <span>Pandas</span>
+                            <span>Machine Learning</span>
+                            <span>DBMS</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="skills-category">
-                        <h4>Engineering & Design</h4>
-                        <div class="skill-tags">
-                            <span>SOLIDWORKS</span>
-                            <span>AutoCAD</span>
-                            <span>Industrial Design</span>
-                            <span>Machine Design</span>
-                            <span>CFD</span>
-                            <span>FEA</span>
+                <div class="education-card">
+                    <div class="education-info">
+                        <h3>Bachelor of Technology in Mechanical Engineering</h3>
+                        <p class="school">Sree Vidyanikethan Engineering College, Tirupati</p>
+                        <p class="duration">Graduated May 2022</p>
+                        <div class="education-skills">
+                            <span>Operations Management</span>
+                            <span>C Programming</span>
+                            <span>Finite Element Analysis</span>
                             <span>Rapid Prototyping</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="skills-category">
-                        <h4>Soft Skills</h4>
-                        <div class="skill-tags">
-                            <span>Leadership</span>
-                            <span>Communication</span>
-                            <span>Critical Thinking</span>
-                            <span>Problem Solving</span>
-                            <span>Teamwork</span>
-                            <span>Public Speaking</span>
-                            <span>Negotiation</span>
+        <!-- Work Experience Section -->
+        <section id="experience" class="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-info">
+                        <h3>Subject Matter Expert</h3>
+                        <p class="company">Chegg India</p>
+                        <p class="duration">Oct 2020 - Aug 2023</p>
+                        <ul class="experience-list">
+                            <li>Responded to 20-50 daily student queries about Calculus and Advanced Math</li>
+                            <li>Provided comprehensive explanations and step-by-step solutions</li>
+                            <li>Created high-quality educational content and tutorials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-info">
+                        <h3>Software Engineer Associate</h3>
+                        <p class="company">BSCA Partners Ltd</p>
+                        <p class="duration">May 2022 - Feb 2023</p>
+                        <ul class="experience-list">
+                            <li>Led development of React-based data visualization dashboard</li>
+                            <li>Developed reusable micro modules supporting senior developers</li>
+                            <li>Created end-to-end automation test flows</li>
+                            <li>Delivered 15+ test cases weekly with high execution quality</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-info">
+                        <h3>Internshala Student Partner</h3>
+                        <p class="company">Internshala</p>
+                        <p class="duration">Oct 2021 - Dec 2021</p>
+                        <ul class="experience-list">
+                            <li>Conducted workshops and information sessions</li>
+                            <li>Facilitated interview preparation programs</li>
+                            <li>Collaborated with academic staff to enhance student success</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Simulations Section -->
+        <section id="simulations" class="simulations">
+            <h2>Professional Development</h2>
+            <div class="simulation-grid">
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Cognizant Agile Methodology Simulation</h3>
+                        <p class="date">November 2023</p>
+                        <ul class="simulation-list">
+                            <li>Created comprehensive analysis of Agile vs Waterfall methodologies</li>
+                            <li>Developed user stories for innovative applications</li>
+                            <li>Diagnosed and solved sprint development issues</li>
+                        </ul>
+                        <a href="https://www.theforage.com/simulations/cognizant/agile-methodology-io6p" class="simulation-link" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Red Bull On-Premise Sales Simulation</h3>
+                        <p class="date">November 2023</p>
+                        <ul class="simulation-list">
+                            <li>Analyzed client performance using Excel</li>
+                            <li>Developed data-driven client recommendations</li>
+                            <li>Applied active listening and social proof techniques</li>
+                        </ul>
+                        <a href="https://www.theforage.com/simulations/red-bull/on-premise-sales-waza" class="simulation-link" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Accenture Data Analytics Simulation</h3>
+                        <p class="date">2023</p>
+                        <ul class="simulation-list">
+                            <li>Analyzed 7 datasets for social media content trends</li>
+                            <li>Created strategic recommendations</li>
+                            <li>Developed presentation materials for stakeholders</li>
+                        </ul>
+                        <a href="https://www.theforage.com/simulations/accenture-nam/data-analytics-mmlb" class="simulation-link" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications">
+            <h2>Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-category">
+                    <h3>Google Professional Certifications</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Google Data Analytics Specialization</h4>
+                            <p class="issuer">Google</p>
+                            <p class="date">Issued Feb 2025</p>
+                            <p class="credential">Credential ID: VJDTCP7JBSTF</p>
+                            <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" class="cert-link">View Certificate</a>
+                            <div class="cert-modules">
+                                <span>Foundations: Data, Data, Everywhere</span>
+                                <span>Ask Questions to Make Data-Driven Decisions</span>
+                                <span>Prepare Data for Exploration</span>
+                                <span>Process Data from Dirty to Clean</span>
+                                <span>Analyze Data to Answer Questions</span>
+                                <span>Share Data Through the Art of Visualization</span>
+                                <span>Google Data Analytics Capstone</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Google IT Automation with Python Professional Certificate</h4>
+                            <p class="issuer">Google</p>
+                            <p class="date">Issued Apr 2025</p>
+                            <p class="credential">Credential ID: TPRZ893ZBLW0</p>
+                            <a href="https://coursera.org/share/TPRZ893ZBLW0" target="_blank" class="cert-link">View Certificate</a>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Google AI Essentials</h4>
+                            <p class="issuer">Google</p>
+                            <p class="date">Issued Apr 2025</p>
+                            <p class="credential">Credential ID: LNZQ8DSKHO7D</p>
+                            <a href="https://coursera.org/share/LNZQ8DSKHO7D" target="_blank" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Honors & Awards Section -->
-    <section id="honors" class="honors">
-        <h2>Honors & Awards</h2>
-        <div class="honors-grid">
-            <div class="honor-card">
-                <div class="honor-header">
-                    <div class="honor-title">
-                        <h3>Runner-Up at CSUF Datathon</h3>
-                        <div class="honor-meta">
-                            <span class="honor-issuer">California State University - Fullerton</span>
-                            <span class="honor-date">October 2024</span>
+                <div class="cert-category">
+                    <h3>Cloud & AWS Certifications</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>AWS Academy Machine Learning Foundations</h4>
+                            <p class="issuer">Amazon Web Services (AWS)</p>
+                            <p class="date">Issued Feb 2025</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>AWS Academy Cloud Foundations</h4>
+                            <p class="issuer">Amazon Web Services (AWS)</p>
+                            <p class="date">Issued Nov 2023</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Databricks Fundamentals Accreditation</h4>
+                            <p class="issuer">Databricks</p>
+                            <p class="date">Issued Apr 2025</p>
                         </div>
                     </div>
-                    <div class="honor-badge">
-                        <i class="fas fa-trophy"></i>
-                    </div>
                 </div>
-                <div class="honor-description">
-                    <p>Achieved Runner-Up position at CSUF Datathon by developing a data-driven solution using Alteryx and Tableau to analyze complex datasets.</p>
-                </div>
-                <div class="honor-tags">
-                    <span>Alteryx</span>
-                    <span>Tableau</span>
-                    <span>Data Analysis</span>
-                    <span>Data Visualization</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <h2>Education</h2>
-        <div class="education-grid">
-            <div class="education-card">
-                <div class="education-info">
-                    <h3>Master of Science in Information Systems</h3>
-                    <p class="school">California State University-Long Beach - College of Business</p>
-                    <p class="duration">Aug 2023 - May 2025</p>
-                    <p class="grade">GPA: 3.9</p>
-                    <div class="education-skills">
-                        <span>AWS</span>
-                        <span>SPSS</span>
-                        <span>Business Analytics</span>
-                        <span>Python</span>
-                        <span>Django</span>
-                        <span>Pandas</span>
-                        <span>Machine Learning</span>
-                        <span>DBMS</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="education-card">
-                <div class="education-info">
-                    <h3>Bachelor of Technology in Mechanical Engineering</h3>
-                    <p class="school">Sree Vidyanikethan Engineering College, Tirupati</p>
-                    <p class="duration">Graduated May 2022</p>
-                    <div class="education-skills">
-                        <span>Operations Management</span>
-                        <span>C Programming</span>
-                        <span>Finite Element Analysis</span>
-                        <span>Rapid Prototyping</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience Section -->
-    <section id="experience" class="experience">
-        <h2>Professional Experience</h2>
-        <div class="experience-grid">
-            <div class="experience-card">
-                <div class="experience-info">
-                    <h3>Subject Matter Expert</h3>
-                    <p class="company">Chegg India</p>
-                    <p class="duration">Oct 2020 - Aug 2023</p>
-                    <ul class="experience-list">
-                        <li>Responded to 20-50 daily student queries about Calculus and Advanced Math</li>
-                        <li>Provided comprehensive explanations and step-by-step solutions</li>
-                        <li>Created high-quality educational content and tutorials</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-info">
-                    <h3>Software Engineer Associate</h3>
-                    <p class="company">BSCA Partners Ltd</p>
-                    <p class="duration">May 2022 - Feb 2023</p>
-                    <ul class="experience-list">
-                        <li>Led development of React-based data visualization dashboard</li>
-                        <li>Developed reusable micro modules supporting senior developers</li>
-                        <li>Created end-to-end automation test flows</li>
-                        <li>Delivered 15+ test cases weekly with high execution quality</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-info">
-                    <h3>Internshala Student Partner</h3>
-                    <p class="company">Internshala</p>
-                    <p class="duration">Oct 2021 - Dec 2021</p>
-                    <ul class="experience-list">
-                        <li>Conducted workshops and information sessions</li>
-                        <li>Facilitated interview preparation programs</li>
-                        <li>Collaborated with academic staff to enhance student success</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Job Simulations Section -->
-    <section id="simulations" class="simulations">
-        <h2>Professional Development</h2>
-        <div class="simulation-grid">
-            <div class="simulation-card">
-                <div class="simulation-info">
-                    <h3>Cognizant Agile Methodology Simulation</h3>
-                    <p class="date">November 2023</p>
-                    <ul class="simulation-list">
-                        <li>Created comprehensive analysis of Agile vs Waterfall methodologies</li>
-                        <li>Developed user stories for innovative applications</li>
-                        <li>Diagnosed and solved sprint development issues</li>
-                    </ul>
-                    <a href="https://www.theforage.com/simulations/cognizant/agile-methodology-io6p" class="simulation-link" target="_blank">View Certificate</a>
-                </div>
-            </div>
-
-            <div class="simulation-card">
-                <div class="simulation-info">
-                    <h3>Red Bull On-Premise Sales Simulation</h3>
-                    <p class="date">November 2023</p>
-                    <ul class="simulation-list">
-                        <li>Analyzed client performance using Excel</li>
-                        <li>Developed data-driven client recommendations</li>
-                        <li>Applied active listening and social proof techniques</li>
-                    </ul>
-                    <a href="https://www.theforage.com/simulations/red-bull/on-premise-sales-waza" class="simulation-link" target="_blank">View Certificate</a>
-                </div>
-            </div>
-
-            <div class="simulation-card">
-                <div class="simulation-info">
-                    <h3>Accenture Data Analytics Simulation</h3>
-                    <p class="date">2023</p>
-                    <ul class="simulation-list">
-                        <li>Analyzed 7 datasets for social media content trends</li>
-                        <li>Created strategic recommendations</li>
-                        <li>Developed presentation materials for stakeholders</li>
-                    </ul>
-                    <a href="https://www.theforage.com/simulations/accenture-nam/data-analytics-mmlb" class="simulation-link" target="_blank">View Certificate</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <h2>Certifications</h2>
-        <div class="cert-grid">
-            <div class="cert-category">
-                <h3>Google Professional Certifications</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Google Data Analytics Specialization</h4>
-                        <p class="issuer">Google</p>
-                        <p class="date">Issued Feb 2025</p>
-                        <p class="credential">Credential ID: VJDTCP7JBSTF</p>
-                        <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" class="cert-link">View Certificate</a>
-                        <div class="cert-modules">
-                            <span>Foundations: Data, Data, Everywhere</span>
-                            <span>Ask Questions to Make Data-Driven Decisions</span>
-                            <span>Prepare Data for Exploration</span>
-                            <span>Process Data from Dirty to Clean</span>
-                            <span>Analyze Data to Answer Questions</span>
-                            <span>Share Data Through the Art of Visualization</span>
-                            <span>Google Data Analytics Capstone</span>
+                <div class="cert-category">
+                    <h3>IBM Enterprise Design Thinking</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Enterprise Design Thinking - Team Essentials for AI</h4>
+                            <p class="issuer">IBM</p>
+                            <p class="date">Issued Feb 2025</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Enterprise Design Thinking Co-Creator</h4>
+                            <p class="issuer">IBM</p>
+                            <p class="date">Issued Feb 2025</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Enterprise Design Thinking Practitioner</h4>
+                            <p class="issuer">IBM</p>
+                            <p class="date">Issued Feb 2025</p>
                         </div>
                     </div>
-                    <div class="cert-item">
-                        <h4>Google IT Automation with Python Professional Certificate</h4>
-                        <p class="issuer">Google</p>
-                        <p class="date">Issued Apr 2025</p>
-                        <p class="credential">Credential ID: TPRZ893ZBLW0</p>
-                        <a href="https://coursera.org/share/TPRZ893ZBLW0" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Google AI Essentials</h4>
-                        <p class="issuer">Google</p>
-                        <p class="date">Issued Apr 2025</p>
-                        <p class="credential">Credential ID: LNZQ8DSKHO7D</p>
-                        <a href="https://coursera.org/share/LNZQ8DSKHO7D" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
                 </div>
-            </div>
 
-            <div class="cert-category">
-                <h3>Cloud & AWS Certifications</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>AWS Academy Machine Learning Foundations</h4>
-                        <p class="issuer">Amazon Web Services (AWS)</p>
-                        <p class="date">Issued Feb 2025</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>AWS Academy Cloud Foundations</h4>
-                        <p class="issuer">Amazon Web Services (AWS)</p>
-                        <p class="date">Issued Nov 2023</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Databricks Fundamentals Accreditation</h4>
-                        <p class="issuer">Databricks</p>
-                        <p class="date">Issued Apr 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cert-category">
-                <h3>IBM Enterprise Design Thinking</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Enterprise Design Thinking - Team Essentials for AI</h4>
-                        <p class="issuer">IBM</p>
-                        <p class="date">Issued Feb 2025</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Enterprise Design Thinking Co-Creator</h4>
-                        <p class="issuer">IBM</p>
-                        <p class="date">Issued Feb 2025</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Enterprise Design Thinking Practitioner</h4>
-                        <p class="issuer">IBM</p>
-                        <p class="date">Issued Feb 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cert-category">
-                <h3>Data Analysis & Visualization</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Data Analysis with R Programming</h4>
-                        <p class="issuer">Google</p>
-                        <p class="date">Issued Feb 2025</p>
-                        <p class="credential">Credential ID: 5AFVFIMOQ7VI</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Alteryx Designer Core Micro-Credential: Data Transformation</h4>
-                        <p class="issuer">Alteryx SparkED</p>
-                        <p class="date">Issued Sep 2024</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Introduction To Tableau</h4>
-                        <p class="issuer">DataCamp</p>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Excel Fundamentals for Data Analysis</h4>
-                        <p class="issuer">Macquarie University</p>
-                        <p class="date">Issued Oct 2021</p>
-                        <p class="credential">Credential ID: 4WMG27NAXBFK</p>
-                        <a href="https://coursera.org/share/390476a38d9387ca66bd6a95716291d8" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cert-category">
-                <h3>Programming & Databases</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Python Programming Certifications</h4>
-                        <p class="issuer">University of Michigan</p>
-                        <div class="cert-modules">
-                            <span>Programming for Everybody (Getting Started with Python)</span>
-                            <span>Python Data Structures</span>
-                            <span>Python: Working with Files</span>
+                <div class="cert-category">
+                    <h3>Data Analysis & Visualization</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Data Analysis with R Programming</h4>
+                            <p class="issuer">Google</p>
+                            <p class="date">Issued Feb 2025</p>
+                            <p class="credential">Credential ID: 5AFVFIMOQ7VI</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Alteryx Designer Core Micro-Credential: Data Transformation</h4>
+                            <p class="issuer">Alteryx SparkED</p>
+                            <p class="date">Issued Sep 2024</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Introduction To Tableau</h4>
+                            <p class="issuer">DataCamp</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Excel Fundamentals for Data Analysis</h4>
+                            <p class="issuer">Macquarie University</p>
+                            <p class="date">Issued Oct 2021</p>
+                            <p class="credential">Credential ID: 4WMG27NAXBFK</p>
+                            <a href="https://coursera.org/share/390476a38d9387ca66bd6a95716291d8" target="_blank" class="cert-link">View Certificate</a>
                         </div>
                     </div>
-                    <div class="cert-item">
-                        <h4>SQL & Database Certifications</h4>
-                        <p class="issuer">DataCamp</p>
-                        <div class="cert-modules">
-                            <span>Introduction to SQL</span>
-                            <span>Joining Data in SQL</span>
-                            <span>Introduction to Databases in Python</span>
+                </div>
+
+                <div class="cert-category">
+                    <h3>Programming & Databases</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Python Programming Certifications</h4>
+                            <p class="issuer">University of Michigan</p>
+                            <div class="cert-modules">
+                                <span>Programming for Everybody (Getting Started with Python)</span>
+                                <span>Python Data Structures</span>
+                                <span>Python: Working with Files</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <h4>SQL & Database Certifications</h4>
+                            <p class="issuer">DataCamp</p>
+                            <div class="cert-modules">
+                                <span>Introduction to SQL</span>
+                                <span>Joining Data in SQL</span>
+                                <span>Introduction to Databases in Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cert-category">
+                    <h3>Project Management & Business</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Project Management Foundations Series</h4>
+                            <p class="issuer">LinkedIn</p>
+                            <div class="cert-modules">
+                                <span>Project Management Foundations</span>
+                                <span>Project Management Foundations: Ethics</span>
+                                <span>Project Management Foundations: Requirements</span>
+                                <span>Project Management Foundations: Schedules</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Strategic Business Management - Macroeconomics</h4>
+                            <p class="issuer">University of California, Irvine</p>
+                            <p class="date">Issued Jul 2020</p>
+                            <p class="credential">Credential ID: 4ZZXCCD97CZG</p>
+                            <a href="https://coursera.org/share/4ZZXCCD97CZG" target="_blank" class="cert-link">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cert-category">
+                    <h3>Industry Simulations & Practical Training</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <h4>Accenture North America - Data Analytics and Visualization</h4>
+                            <p class="issuer">Forage</p>
+                            <p class="date">Issued Jan 2024</p>
+                            <p class="credential">Credential ID: ee7SWhWczPLbpm6sr</p>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_ee7SWhWczPLbpm6sr_1706252533734_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Cognizant - Agile Methodology Job Simulation</h4>
+                            <p class="issuer">Forage</p>
+                            <p class="date">Issued Nov 2023</p>
+                            <p class="credential">Credential ID: NJjrSCv6enSowTbMd</p>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Cognizant/ZZswQqhKWGQp6XiP6_Cognizant_NJjrSCv6enSowTbMd_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Red Bull - On-Premise Sales Job Simulation</h4>
+                            <p class="issuer">Forage</p>
+                            <p class="date">Issued Nov 2023</p>
+                            <p class="credential">Credential ID: tbi23F48tciqyMsZj</p>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Red%20Bull/GzGKNYQhYqhRB4z9G_Red%20Bull_tbi23F48tciqyMsZj_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="cert-category">
-                <h3>Project Management & Business</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Project Management Foundations Series</h4>
-                        <p class="issuer">LinkedIn</p>
-                        <div class="cert-modules">
-                            <span>Project Management Foundations</span>
-                            <span>Project Management Foundations: Ethics</span>
-                            <span>Project Management Foundations: Requirements</span>
-                            <span>Project Management Foundations: Schedules</span>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Strategic Business Management - Macroeconomics</h4>
-                        <p class="issuer">University of California, Irvine</p>
-                        <p class="date">Issued Jul 2020</p>
-                        <p class="credential">Credential ID: 4ZZXCCD97CZG</p>
-                        <a href="https://coursera.org/share/4ZZXCCD97CZG" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cert-category">
-                <h3>Industry Simulations & Practical Training</h3>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <h4>Accenture North America - Data Analytics and Visualization</h4>
-                        <p class="issuer">Forage</p>
-                        <p class="date">Issued Jan 2024</p>
-                        <p class="credential">Credential ID: ee7SWhWczPLbpm6sr</p>
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_ee7SWhWczPLbpm6sr_1706252533734_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Cognizant - Agile Methodology Job Simulation</h4>
-                        <p class="issuer">Forage</p>
-                        <p class="date">Issued Nov 2023</p>
-                        <p class="credential">Credential ID: NJjrSCv6enSowTbMd</p>
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Cognizant/ZZswQqhKWGQp6XiP6_Cognizant_NJjrSCv6enSowTbMd_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                    <div class="cert-item">
-                        <h4>Red Bull - On-Premise Sales Job Simulation</h4>
-                        <p class="issuer">Forage</p>
-                        <p class="date">Issued Nov 2023</p>
-                        <p class="credential">Credential ID: tbi23F48tciqyMsZj</p>
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Red%20Bull/GzGKNYQhYqhRB4z9G_Red%20Bull_tbi23F48tciqyMsZj_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            .cert-grid {
-                display: grid;
-                gap: 2rem;
-                padding: 2rem 0;
-            }
-
-            .cert-category {
-                background: #ffffff;
-                border-radius: 10px;
-                padding: 2rem;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 2rem;
-            }
-
-            .cert-category h3 {
-                color: #1e40af;
-                font-size: 1.5rem;
-                font-weight: 600;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid #3b82f6;
-            }
-
-            .cert-list {
-                display: grid;
-                gap: 1.5rem;
-            }
-
-            .cert-item {
-                background: #f8fafc;
-                border-radius: 8px;
-                padding: 1.5rem;
-                border-left: 4px solid #2563eb;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            }
-
-            .cert-item h4 {
-                color: #1e293b;
-                font-size: 1.125rem;
-                font-weight: 600;
-                margin-bottom: 1rem;
-            }
-
-            .cert-item p {
-                margin: 0.5rem 0;
-                color: #334155;
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-
-            .cert-item .issuer {
-                font-weight: 600;
-                color: #1e293b;
-            }
-
-            .cert-item .date {
-                font-size: 0.9rem;
-                color: #475569;
-                font-weight: 500;
-            }
-
-            .cert-item .credential {
-                font-family: 'Consolas', monospace;
-                font-size: 0.9rem;
-                color: #1e293b;
-                background: #e2e8f0;
-                padding: 0.5rem 0.75rem;
-                border-radius: 4px;
-                display: inline-block;
-                margin: 0.5rem 0;
-                border: 1px solid #cbd5e1;
-            }
-
-            .cert-modules {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-
-            .cert-modules span {
-                background: #e2e8f0;
-                color: #1e293b;
-                padding: 0.5rem 1rem;
-                border-radius: 9999px;
-                font-size: 0.875rem;
-                font-weight: 500;
-                border: 1px solid #cbd5e1;
-            }
-
-            .cert-link {
-                display: inline-flex;
-                align-items: center;
-                margin-top: 1rem;
-                padding: 0.75rem 1.5rem;
-                background-color: #2563eb;
-                color: #ffffff;
-                text-decoration: none;
-                border-radius: 6px;
-                font-size: 1rem;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-            }
-            
-            .cert-link:hover {
-                background-color: #1d4ed8;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-            }
-
-            .cert-link i {
-                margin-right: 0.5rem;
-                font-size: 1.1rem;
-            }
-
-            .cert-link::before {
-                content: "🔗";
-                margin-right: 0.5rem;
-                font-size: 1.1rem;
-            }
-
-            @media (min-width: 768px) {
+            <style>
                 .cert-grid {
-                    grid-template-columns: repeat(2, 1fr);
+                    display: grid;
+                    gap: 2rem;
+                    padding: 2rem 0;
                 }
-            }
 
-            @media (max-width: 767px) {
                 .cert-category {
+                    background: #ffffff;
+                    border-radius: 10px;
+                    padding: 2rem;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    margin-bottom: 2rem;
+                }
+
+                .cert-category h3 {
+                    color: #1e40af;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin-bottom: 1.5rem;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 2px solid #3b82f6;
+                }
+
+                .cert-list {
+                    display: grid;
+                    gap: 1.5rem;
+                }
+
+                .cert-item {
+                    background: #f8fafc;
+                    border-radius: 8px;
                     padding: 1.5rem;
+                    border-left: 4px solid #2563eb;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                }
+
+                .cert-item h4 {
+                    color: #1e293b;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+
+                .cert-item p {
+                    margin: 0.5rem 0;
+                    color: #334155;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                }
+
+                .cert-item .issuer {
+                    font-weight: 600;
+                    color: #1e293b;
+                }
+
+                .cert-item .date {
+                    font-size: 0.9rem;
+                    color: #475569;
+                    font-weight: 500;
+                }
+
+                .cert-item .credential {
+                    font-family: 'Consolas', monospace;
+                    font-size: 0.9rem;
+                    color: #1e293b;
+                    background: #e2e8f0;
+                    padding: 0.5rem 0.75rem;
+                    border-radius: 4px;
+                    display: inline-block;
+                    margin: 0.5rem 0;
+                    border: 1px solid #cbd5e1;
+                }
+
+                .cert-modules {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                }
+
+                .cert-modules span {
+                    background: #e2e8f0;
+                    color: #1e293b;
+                    padding: 0.5rem 1rem;
+                    border-radius: 9999px;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    border: 1px solid #cbd5e1;
+                }
+
+                .cert-link {
+                    display: inline-flex;
+                    align-items: center;
+                    margin-top: 1rem;
+                    padding: 0.75rem 1.5rem;
+                    background-color: #2563eb;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
                 }
                 
-                .cert-item {
-                    padding: 1.25rem;
+                .cert-link:hover {
+                    background-color: #1d4ed8;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
                 }
-            }
-        </style>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>Featured Projects</h2>
+                .cert-link i {
+                    margin-right: 0.5rem;
+                    font-size: 1.1rem;
+                }
 
-        <div class="project-category">
-            <h3>Data Analytics & AI</h3>
-            <div class="project-grid">
-                <div class="project-card featured">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/AI Logistics Optimization Agent.png" alt="AI Logistics Optimization Agent">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>AI Logistics Optimization Agent</h4>
-                        <p class="project-date">Apr 2025 - May 2025</p>
-                        <p class="project-description">Built an intelligent decision-support tool using Python, Streamlit, and scikit-learn that recommends optimal delivery modes based on shipment attributes like distance, weight, and urgency.</p>
-                        <ul class="project-features">
-                            <li>ML-powered recommendations with rule-based logic</li>
-                            <li>Confidence scoring and cost/ETA estimation</li>
-                            <li>Self-learning loop via decision logs</li>
-                            <li>Interactive UI with filtering and visualization</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Streamlit</span>
-                            <span>scikit-learn</span>
-                            <span>pandas</span>
-                            <span>Matplotlib</span>
-                            <span>Seaborn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                .cert-link::before {
+                    content: "🔗";
+                    margin-right: 0.5rem;
+                    font-size: 1.1rem;
+                }
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Retail Sales Forecasting & Automation.png" alt="Retail Sales Forecasting & Automation">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Retail Sales Forecasting & Automation</h4>
-                        <p class="project-date">Feb 2025 - May 2025</p>
-                        <p class="project-description">Built an end-to-end sales forecasting pipeline analyzing Walmart's weekly store sales.</p>
-                        <ul class="project-features">
-                            <li>92% forecast accuracy using Prophet</li>
-                            <li>DuckDB-powered sales trend analysis</li>
-                            <li>LLM-generated executive summaries</li>
-                            <li>Automated report delivery via n8n</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>DuckDB</span>
-                            <span>Prophet</span>
-                            <span>Power BI</span>
-                            <span>LLMs</span>
-                            <span>n8n</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @media (min-width: 768px) {
+                    .cert-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Facial Expression Recognition.png" alt="Facial Expression Recognition">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Facial Expression Recognition</h4>
-                        <p class="project-date">Aug 2024 - Dec 2024</p>
-                        <p class="project-description">Deep learning model classifying emotions from facial expressions.</p>
-                        <ul class="project-features">
-                            <li>Processed 35,000+ FER2013 dataset images</li>
-                            <li>66% accuracy across 7 emotion classes</li>
-                            <li>20% boost via data augmentation</li>
-                            <li>Applications in healthcare and security</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>CNN</span>
-                            <span>RNN</span>
-                            <span>Deep Learning</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/Facial_expression_rcognition" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @media (max-width: 767px) {
+                    .cert-category {
+                        padding: 1.5rem;
+                    }
+                    
+                    .cert-item {
+                        padding: 1.25rem;
+                    }
+                }
+            </style>
+        </section>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/News Article Popularity Predictor.png" alt="News Article Popularity Predictor">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>News Article Popularity Predictor</h4>
-                        <p class="project-date">Aug 2024 - Dec 2024</p>
-                        <p class="project-description">Machine learning model predicting article popularity.</p>
-                        <ul class="project-features">
-                            <li>Analyzed 39,644 Mashable articles</li>
-                            <li>73% prediction accuracy</li>
-                            <li>Optimized 10+ predictive features</li>
-                            <li>25% content strategy improvement</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Deep Learning</span>
-                            <span>Random Forest</span>
-                            <span>RNN</span>
-                            <span>Data Visualization</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/Deep_learning_structured" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2>Featured Projects</h2>
 
-        <div class="project-category">
-            <h3>Business Intelligence & Visualization</h3>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard">
-                    </div>
-                    <div class="project-info">
-                        <h4>Chocolate Sales Analysis – Tableau</h4>
-                        <p class="project-date">Mar 2025 - Apr 2025</p>
-                        <p class="project-description">Interactive Tableau dashboard analyzing global chocolate sales performance with detailed metrics and trends.</p>
-                        <ul class="project-features">
-                            <li>Monthly sales tracking (peak: 27,535 boxes in January 2022)</li>
-                            <li>Geographic distribution across North America, Australia, and Asia</li>
-                            <li>Top 20 product performance analysis (ranging 6,464 - 9,792 boxes)</li>
-                            <li>Dynamic filtering by Month, Country, Product, and Sales Person</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Tableau</span>
-                            <span>Data Visualization</span>
-                            <span>Analytics</span>
+            <div class="project-category">
+                <h3>Data Analytics & AI</h3>
+                <div class="project-grid">
+                    <div class="project-card featured">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/AI Logistics Optimization Agent.png" alt="AI Logistics Optimization Agent">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>AI Logistics Optimization Agent</h4>
+                            <p class="project-date">Apr 2025 - May 2025</p>
+                            <p class="project-description">Built an intelligent decision-support tool using Python, Streamlit, and scikit-learn that recommends optimal delivery modes based on shipment attributes like distance, weight, and urgency.</p>
+                            <ul class="project-features">
+                                <li>ML-powered recommendations with rule-based logic</li>
+                                <li>Confidence scoring and cost/ETA estimation</li>
+                                <li>Self-learning loop via decision logs</li>
+                                <li>Interactive UI with filtering and visualization</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>scikit-learn</span>
+                                <span>pandas</span>
+                                <span>Matplotlib</span>
+                                <span>Seaborn</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard">
-                    </div>
-                    <div class="project-info">
-                        <h4>Nike USA Sales Analysis</h4>
-                        <p class="project-date">Jan 2024 - May 2024</p>
-                        <p class="project-description">Interactive Power BI dashboards for Nike sales analysis.</p>
-                        <ul class="project-features">
-                            <li>Advanced filtering capabilities</li>
-                            <li>Regional sales trend visualization</li>
-                            <li>Comprehensive performance metrics</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Power BI</span>
-                            <span>Data Visualization</span>
-                            <span>Analytics</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Retail Sales Forecasting & Automation.png" alt="Retail Sales Forecasting & Automation">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://app.powerbi.com/groups/me/reports/b0ff556e-7666-4dbb-8093-9c5e56a731b6/ReportSection?experience=power-bi" target="_blank" class="project-link">
-                                <i class="fas fa-chart-bar"></i> Power BI Dashboard
-                            </a>
-                            <a href="https://drive.google.com/file/d/1ELvBN9ASRtqZV5IR_PmY7iUUQZcwv37X/view" target="_blank" class="project-link">
-                                <i class="fab fa-google-drive"></i> Project Documentation
-                            </a>
+                        <div class="project-info">
+                            <h4>Retail Sales Forecasting & Automation</h4>
+                            <p class="project-date">Feb 2025 - May 2025</p>
+                            <p class="project-description">Built an end-to-end sales forecasting pipeline analyzing Walmart's weekly store sales.</p>
+                            <ul class="project-features">
+                                <li>92% forecast accuracy using Prophet</li>
+                                <li>DuckDB-powered sales trend analysis</li>
+                                <li>LLM-generated executive summaries</li>
+                                <li>Automated report delivery via n8n</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>DuckDB</span>
+                                <span>Prophet</span>
+                                <span>Power BI</span>
+                                <span>LLMs</span>
+                                <span>n8n</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard">
-                    </div>
-                    <div class="project-info">
-                        <h4>Spotify Data Analysis</h4>
-                        <p class="project-date">May 2024 - Aug 2024</p>
-                        <p class="project-description">Comprehensive analysis of Spotify streaming patterns and music trends using Power BI.</p>
-                        <ul class="project-features">
-                            <li>Analyzed 489.46bn total streams across 952 tracks</li>
-                            <li>Track performance metrics and daily streaming patterns</li>
-                            <li>Artist popularity analysis with top performers like The Weeknd, Ed Sheeran</li>
-                            <li>Music attribute analysis (Energy: 186, Danceability: 183, Speech: 18)</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Power BI</span>
-                            <span>Data Analytics</span>
-                            <span>Business Intelligence</span>
-                            <span>Data Visualization</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Facial Expression Recognition.png" alt="Facial Expression Recognition">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://app.powerbi.com/groups/me/reports/364ac5f7-f330-4302-b1ce-95755a448a3c/ReportSection?experience=power-bi" target="_blank" class="project-link">
-                                <i class="fas fa-chart-bar"></i> Power BI Dashboard
-                            </a>
-                            <a href="https://drive.google.com/file/d/1FiVRk6M69DaoHs8JLOyBxXeejcM1N6VU/view" target="_blank" class="project-link">
-                                <i class="fab fa-google-drive"></i> Project Documentation
-                            </a>
+                        <div class="project-info">
+                            <h4>Facial Expression Recognition</h4>
+                            <p class="project-date">Aug 2024 - Dec 2024</p>
+                            <p class="project-description">Deep learning model classifying emotions from facial expressions.</p>
+                            <ul class="project-features">
+                                <li>Processed 35,000+ FER2013 dataset images</li>
+                                <li>66% accuracy across 7 emotion classes</li>
+                                <li>20% boost via data augmentation</li>
+                                <li>Applications in healthcare and security</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>CNN</span>
+                                <span>RNN</span>
+                                <span>Deep Learning</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Facial_expression_rcognition" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/News Article Popularity Predictor.png" alt="News Article Popularity Predictor">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>News Article Popularity Predictor</h4>
+                            <p class="project-date">Aug 2024 - Dec 2024</p>
+                            <p class="project-description">Machine learning model predicting article popularity.</p>
+                            <ul class="project-features">
+                                <li>Analyzed 39,644 Mashable articles</li>
+                                <li>73% prediction accuracy</li>
+                                <li>Optimized 10+ predictive features</li>
+                                <li>25% content strategy improvement</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Deep Learning</span>
+                                <span>Random Forest</span>
+                                <span>RNN</span>
+                                <span>Data Visualization</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Deep_learning_structured" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="project-category">
-            <h3>Automation & Development</h3>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Automated Data Entry & Form Submission.png" alt="Automated Data Entry & Form Submission">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+            <div class="project-category">
+                <h3>Business Intelligence & Visualization</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard">
+                        </div>
+                        <div class="project-info">
+                            <h4>Chocolate Sales Analysis – Tableau</h4>
+                            <p class="project-date">Mar 2025 - Apr 2025</p>
+                            <p class="project-description">Interactive Tableau dashboard analyzing global chocolate sales performance with detailed metrics and trends.</p>
+                            <ul class="project-features">
+                                <li>Monthly sales tracking (peak: 27,535 boxes in January 2022)</li>
+                                <li>Geographic distribution across North America, Australia, and Asia</li>
+                                <li>Top 20 product performance analysis (ranging 6,464 - 9,792 boxes)</li>
+                                <li>Dynamic filtering by Month, Country, Product, and Sales Person</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Tableau</span>
+                                <span>Data Visualization</span>
+                                <span>Analytics</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h4>Automated Data Entry & Form Submission</h4>
-                        <p class="project-date">Feb 2025</p>
-                        <p class="project-description">Python automation for job application processes.</p>
-                        <ul class="project-features">
-                            <li>90% reduction in manual effort</li>
-                            <li>SERPAPI and BeautifulSoup web scraping</li>
-                            <li>Excel data processing with Pandas</li>
-                            <li>Automated form submissions</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Selenium</span>
-                            <span>BeautifulSoup</span>
-                            <span>Pandas</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/Job-Scanner" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Taxi Booking Wireframe Application.png" alt="Taxi Booking Wireframe Application">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard">
+                        </div>
+                        <div class="project-info">
+                            <h4>Nike USA Sales Analysis</h4>
+                            <p class="project-date">Jan 2024 - May 2024</p>
+                            <p class="project-description">Interactive Power BI dashboards for Nike sales analysis.</p>
+                            <ul class="project-features">
+                                <li>Advanced filtering capabilities</li>
+                                <li>Regional sales trend visualization</li>
+                                <li>Comprehensive performance metrics</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Power BI</span>
+                                <span>Data Visualization</span>
+                                <span>Analytics</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://app.powerbi.com/groups/me/reports/b0ff556e-7666-4dbb-8093-9c5e56a731b6/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                    <i class="fas fa-chart-bar"></i> Power BI Dashboard
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ELvBN9ASRtqZV5IR_PmY7iUUQZcwv37X/view" target="_blank" class="project-link">
+                                    <i class="fab fa-google-drive"></i> Project Documentation
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h4>Taxi Booking Wireframe Application</h4>
-                        <p class="project-date">Jan 2025</p>
-                        <p class="project-description">Interactive wireframe prototype for taxi booking.</p>
-                        <ul class="project-features">
-                            <li>User research and competitor analysis</li>
-                            <li>Real-time tracking features</li>
-                            <li>Interactive UI/UX designs</li>
-                            <li>Iterative design process</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>JustMind</span>
-                            <span>Wireframing</span>
-                            <span>UI/UX Design</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Budget and Expenses Tracker.png" alt="Budget and Expenses Tracker">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard">
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Budget and Expenses Tracker</h4>
-                        <p class="project-date">Jan 2024 - Mar 2024</p>
-                        <p class="project-description">User-friendly budget tracking application.</p>
-                        <ul class="project-features">
-                            <li>CRUD operations</li>
-                            <li>Excel integration with Pandas</li>
-                            <li>Data persistence</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Excel</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnavyas36/Budget-Tracker-and-Analysis" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
+                        <div class="project-info">
+                            <h4>Spotify Data Analysis</h4>
+                            <p class="project-date">May 2024 - Aug 2024</p>
+                            <p class="project-description">Comprehensive analysis of Spotify streaming patterns and music trends using Power BI.</p>
+                            <ul class="project-features">
+                                <li>Analyzed 489.46bn total streams across 952 tracks</li>
+                                <li>Track performance metrics and daily streaming patterns</li>
+                                <li>Artist popularity analysis with top performers like The Weeknd, Ed Sheeran</li>
+                                <li>Music attribute analysis (Energy: 186, Danceability: 183, Speech: 18)</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Power BI</span>
+                                <span>Data Analytics</span>
+                                <span>Business Intelligence</span>
+                                <span>Data Visualization</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://app.powerbi.com/groups/me/reports/364ac5f7-f330-4302-b1ce-95755a448a3c/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                    <i class="fas fa-chart-bar"></i> Power BI Dashboard
+                                </a>
+                                <a href="https://drive.google.com/file/d/1FiVRk6M69DaoHs8JLOyBxXeejcM1N6VU/view" target="_blank" class="project-link">
+                                    <i class="fab fa-google-drive"></i> Project Documentation
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="project-category">
-            <h3>Research & Case Studies</h3>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/WEDM Parameter Optimization Study.png" alt="WEDM Parameter Optimization Study">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+            <div class="project-category">
+                <h3>Automation & Development</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Automated Data Entry & Form Submission.png" alt="Automated Data Entry & Form Submission">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Automated Data Entry & Form Submission</h4>
+                            <p class="project-date">Feb 2025</p>
+                            <p class="project-description">Python automation for job application processes.</p>
+                            <ul class="project-features">
+                                <li>90% reduction in manual effort</li>
+                                <li>SERPAPI and BeautifulSoup web scraping</li>
+                                <li>Excel data processing with Pandas</li>
+                                <li>Automated form submissions</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Selenium</span>
+                                <span>BeautifulSoup</span>
+                                <span>Pandas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Job-Scanner" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h4>WEDM Parameter Optimization Study</h4>
-                        <p class="project-date">Dec 2017 - Jun 2018</p>
-                        <p class="project-description">Applied Taguchi's DOE and Grey Relational Analysis for WEDM optimization.</p>
-                        <ul class="project-features">
-                            <li>Multivariate statistical analysis</li>
-                            <li>Parameter optimization</li>
-                            <li>Quality control improvements</li>
-                            <li>Predictive insights development</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Statistical Analysis</span>
-                            <span>DOE</span>
-                            <span>Multivariate Analysis</span>
-                            <span>Predictive Analytics</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/Big Data Analytics - Value & Limitations.png" alt="Big Data Analytics - Value & Limitations">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Taxi Booking Wireframe Application.png" alt="Taxi Booking Wireframe Application">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Taxi Booking Wireframe Application</h4>
+                            <p class="project-date">Jan 2025</p>
+                            <p class="project-description">Interactive wireframe prototype for taxi booking.</p>
+                            <ul class="project-features">
+                                <li>User research and competitor analysis</li>
+                                <li>Real-time tracking features</li>
+                                <li>Interactive UI/UX designs</li>
+                                <li>Iterative design process</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>JustMind</span>
+                                <span>Wireframing</span>
+                                <span>UI/UX Design</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h4>Big Data Analytics: Value & Limitations</h4>
-                        <p class="project-description">Research on big data applications in business.</p>
-                        <ul class="project-features">
-                            <li>Case studies of Amazon and Spotify</li>
-                            <li>Data quality assessment</li>
-                            <li>Ethical considerations</li>
-                            <li>Business value optimization</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image-container">
-                        <img class="project-image" src="assets/COVID-19 Supply Chain Study.png" alt="COVID-19 Supply Chain Study">
-                        <div class="project-image-overlay">
-                            <span>Click to view full project</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Budget and Expenses Tracker.png" alt="Budget and Expenses Tracker">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h4>COVID-19 Supply Chain Study</h4>
-                        <p class="project-description">Analysis of digital transformation in supply chains.</p>
-                        <ul class="project-features">
-                            <li>IoT and AI applications</li>
-                            <li>Risk diversification strategies</li>
-                            <li>Cloud-based logistics solutions</li>
-                        </ul>
+                        <div class="project-info">
+                            <h4>Budget and Expenses Tracker</h4>
+                            <p class="project-date">Jan 2024 - Mar 2024</p>
+                            <p class="project-description">User-friendly budget tracking application.</p>
+                            <ul class="project-features">
+                                <li>CRUD operations</li>
+                                <li>Excel integration with Pandas</li>
+                                <li>Data persistence</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Pandas</span>
+                                <span>Excel</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Budget-Tracker-and-Analysis" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <a href="mailto:krishnavyasd@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>krishnavyasd@gmail.com</span>
-                </a>
-                <a href="tel:+15627193609" class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+1 (562) 719-3609</span>
-                </a>
-                <a href="https://github.com/krishnavyas36" class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://linkedin.com/in/krishnavyas-desugari-55752319b" class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
+            <div class="project-category">
+                <h3>Research & Case Studies</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/WEDM Parameter Optimization Study.png" alt="WEDM Parameter Optimization Study">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>WEDM Parameter Optimization Study</h4>
+                            <p class="project-date">Dec 2017 - Jun 2018</p>
+                            <p class="project-description">Applied Taguchi's DOE and Grey Relational Analysis for WEDM optimization.</p>
+                            <ul class="project-features">
+                                <li>Multivariate statistical analysis</li>
+                                <li>Parameter optimization</li>
+                                <li>Quality control improvements</li>
+                                <li>Predictive insights development</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Statistical Analysis</span>
+                                <span>DOE</span>
+                                <span>Multivariate Analysis</span>
+                                <span>Predictive Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/Big Data Analytics - Value & Limitations.png" alt="Big Data Analytics - Value & Limitations">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Big Data Analytics: Value & Limitations</h4>
+                            <p class="project-description">Research on big data applications in business.</p>
+                            <ul class="project-features">
+                                <li>Case studies of Amazon and Spotify</li>
+                                <li>Data quality assessment</li>
+                                <li>Ethical considerations</li>
+                                <li>Business value optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img class="project-image" src="assets/COVID-19 Supply Chain Study.png" alt="COVID-19 Supply Chain Study">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>COVID-19 Supply Chain Study</h4>
+                            <p class="project-description">Analysis of digital transformation in supply chains.</p>
+                            <ul class="project-features">
+                                <li>IoT and AI applications</li>
+                                <li>Risk diversification strategies</li>
+                                <li>Cloud-based logistics solutions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <style>
-            .contact-info {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-            }
-            
-            .contact-item {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                padding: 15px 20px;
-                background: #ffffff;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #333;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            .contact-item:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            }
-            
-            .contact-item i {
-                font-size: 24px;
-                color: #2563eb;
-            }
-            
-            .contact-item span {
-                font-size: 16px;
-            }
-        </style>
-    </section>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <a href="mailto:krishnavyasd@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>krishnavyasd@gmail.com</span>
+                    </a>
+                    <a href="tel:+15627193609" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (562) 719-3609</span>
+                    </a>
+                    <a href="https://github.com/krishnavyas36" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/krishnavyas-desugari-55752319b" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+            <style>
+                .contact-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+                
+                .contact-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 15px 20px;
+                    background: #ffffff;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: #333;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                
+                .contact-item:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                }
+                
+                .contact-item i {
+                    font-size: 24px;
+                    color: #2563eb;
+                }
+                
+                .contact-item span {
+                    font-size: 16px;
+                }
+            </style>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -1229,30 +1366,106 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Loading Animation
+            window.addEventListener('load', () => {
+                const loader = document.querySelector('.loader-wrapper');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            });
+
+            // Mobile Navigation
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                navToggle.setAttribute('aria-expanded', isExpanded);
+            });
+
+            // Close mobile nav when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile nav if open
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Back to Top Button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Lazy Loading Images
+            const images = document.querySelectorAll('.project-image');
+            const imageOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, imageOptions);
+
+            images.forEach(image => imageObserver.observe(image));
+
+            // Modal functionality (existing code)
             const modal = document.getElementById('imageModal');
             const modalImage = modal.querySelector('.modal-image');
             const modalClose = modal.querySelector('.modal-close');
 
-            // Close modal when clicking the close button
             modalClose.addEventListener('click', () => {
                 modal.classList.remove('active');
             });
 
-            // Close modal when clicking outside the image
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.classList.remove('active');
                 }
             });
 
-            // Handle escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.classList.contains('active')) {
                     modal.classList.remove('active');
                 }
             });
 
-            // Open modal when clicking project images
             document.querySelectorAll('.project-image-container').forEach(container => {
                 container.addEventListener('click', () => {
                     const imgSrc = container.querySelector('img').src;

@@ -12,14 +12,129 @@
         .project-card {
             background: #ffffff;
             border-radius: 10px;
-            padding: 20px;
+            padding: 0;
             margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
+            overflow: hidden;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image-container:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-image-container:hover .project-image-overlay {
+            opacity: 1;
+        }
+
+        .project-image-overlay span {
+            color: white;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-image-container {
+                height: 200px;
+            }
+
+            .modal {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal-close {
+                top: -1.5rem;
+                right: -1rem;
+            }
         }
         /* ... existing styles ... */
     </style>
@@ -343,6 +458,12 @@
                         <p class="issuer">Google</p>
                         <p class="date">Issued Feb 2025</p>
                         <p class="credential">Credential ID: VJDTCP7JBSTF</p>
+                        <div class="cert-image-container">
+                            <img class="cert-image" src="https://i.imgur.com/EXAMPLE.png" alt="Google Data Analytics Certificate">
+                            <div class="cert-image-overlay">
+                                <span>Click to view full certificate</span>
+                            </div>
+                        </div>
                         <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" class="cert-link">View Certificate</a>
                         <div class="cert-modules">
                             <span>Foundations: Data, Data, Everywhere</span>
@@ -665,6 +786,12 @@
             <h3>Data Analytics & AI</h3>
             <div class="project-grid">
                 <div class="project-card featured">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/AI Logistics Optimization Agent.png" alt="AI Logistics Optimization Agent">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>AI Logistics Optimization Agent</h4>
                         <p class="project-date">Apr 2025 - May 2025</p>
@@ -692,6 +819,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Retail Sales Forecasting & Automation.png" alt="Retail Sales Forecasting & Automation">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Retail Sales Forecasting & Automation</h4>
                         <p class="project-date">Feb 2025 - May 2025</p>
@@ -719,6 +852,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Facial Expression Recognition.png" alt="Facial Expression Recognition">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Facial Expression Recognition</h4>
                         <p class="project-date">Aug 2024 - Dec 2024</p>
@@ -743,6 +882,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/News Article Popularity Predictor.png" alt="News Article Popularity Predictor">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>News Article Popularity Predictor</h4>
                         <p class="project-date">Aug 2024 - Dec 2024</p>
@@ -773,6 +918,9 @@
             <h3>Business Intelligence & Visualization</h3>
             <div class="project-grid">
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard">
+                    </div>
                     <div class="project-info">
                         <h4>Chocolate Sales Analysis – Tableau</h4>
                         <p class="project-date">Mar 2025 - Apr 2025</p>
@@ -792,6 +940,9 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard">
+                    </div>
                     <div class="project-info">
                         <h4>Nike USA Sales Analysis</h4>
                         <p class="project-date">Jan 2024 - May 2024</p>
@@ -818,6 +969,9 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard">
+                    </div>
                     <div class="project-info">
                         <h4>Spotify Data Analysis</h4>
                         <p class="project-date">May 2024 - Aug 2024</p>
@@ -851,6 +1005,12 @@
             <h3>Automation & Development</h3>
             <div class="project-grid">
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Automated Data Entry & Form Submission.png" alt="Automated Data Entry & Form Submission">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Automated Data Entry & Form Submission</h4>
                         <p class="project-date">Feb 2025</p>
@@ -876,6 +1036,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Taxi Booking Wireframe Application.png" alt="Taxi Booking Wireframe Application">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Taxi Booking Wireframe Application</h4>
                         <p class="project-date">Jan 2025</p>
@@ -895,6 +1061,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Budget and Expenses Tracker.png" alt="Budget and Expenses Tracker">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Budget and Expenses Tracker</h4>
                         <p class="project-date">Jan 2024 - Mar 2024</p>
@@ -923,6 +1095,12 @@
             <h3>Research & Case Studies</h3>
             <div class="project-grid">
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/WEDM Parameter Optimization Study.png" alt="WEDM Parameter Optimization Study">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>WEDM Parameter Optimization Study</h4>
                         <p class="project-date">Dec 2017 - Jun 2018</p>
@@ -943,6 +1121,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/Big Data Analytics - Value & Limitations.png" alt="Big Data Analytics - Value & Limitations">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>Big Data Analytics: Value & Limitations</h4>
                         <p class="project-description">Research on big data applications in business.</p>
@@ -956,6 +1140,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img class="project-image" src="assets/COVID-19 Supply Chain Study.png" alt="COVID-19 Supply Chain Study">
+                        <div class="project-image-overlay">
+                            <span>Click to view full project</span>
+                        </div>
+                    </div>
                     <div class="project-info">
                         <h4>COVID-19 Supply Chain Study</h4>
                         <p class="project-description">Analysis of digital transformation in supply chains.</p>
@@ -1036,5 +1226,49 @@
     <footer>
         <p>&copy; 2024 Krishnavyas Desugari. All rights reserved.</p>
     </footer>
+
+    <!-- Add this at the end of the body tag -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img class="modal-image" src="" alt="Project Image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImage = modal.querySelector('.modal-image');
+            const modalClose = modal.querySelector('.modal-close');
+
+            // Close modal when clicking the close button
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Open modal when clicking project images
+            document.querySelectorAll('.project-image-container').forEach(container => {
+                container.addEventListener('click', () => {
+                    const imgSrc = container.querySelector('img').src;
+                    modalImage.src = imgSrc;
+                    modal.classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

@@ -17,6 +17,8 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -26,25 +28,19 @@
 
         .project-image-container {
             width: 100%;
-            height: 250px;
+            height: 300px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            background: #f8fafc;
         }
 
         .project-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 1rem;
             transition: transform 0.3s ease;
-        }
-
-        .project-image-container:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-info {
-            padding: 1.5rem;
         }
 
         .project-image-overlay {
@@ -53,7 +49,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,16 +57,18 @@
             transition: opacity 0.3s ease;
         }
 
-        .project-image-container:hover .project-image-overlay {
-            opacity: 1;
+        .project-image-overlay span {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            text-align: center;
         }
 
-        .project-image-overlay span {
-            color: white;
-            font-size: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 4px;
+        .project-image-container:hover .project-image-overlay {
+            opacity: 1;
         }
 
         /* Modal styles */
@@ -458,12 +456,6 @@
                         <p class="issuer">Google</p>
                         <p class="date">Issued Feb 2025</p>
                         <p class="credential">Credential ID: VJDTCP7JBSTF</p>
-                        <div class="cert-image-container">
-                            <img class="cert-image" src="https://i.imgur.com/EXAMPLE.png" alt="Google Data Analytics Certificate">
-                            <div class="cert-image-overlay">
-                                <span>Click to view full certificate</span>
-                            </div>
-                        </div>
                         <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" class="cert-link">View Certificate</a>
                         <div class="cert-modules">
                             <span>Foundations: Data, Data, Everywhere</span>

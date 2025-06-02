@@ -138,31 +138,55 @@
             gap: 3rem;
             margin: 2rem auto;
             max-width: 800px;
+            padding: 0 2rem;
         }
 
         .project-card {
             background: #ffffff;
-            border-radius: 10px;
-            padding: 0;
-            margin-bottom: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            border-radius: 12px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .project-image-container {
             width: 100%;
-            height: 400px;
-            overflow: hidden;
+            aspect-ratio: 16/9;
             position: relative;
-            cursor: pointer;
             background: #f8fafc;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f8fafc;
+            padding: 1rem;
+        }
+
+        .project-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-image-overlay span {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .project-image-container:hover .project-image-overlay {
+            opacity: 1;
         }
 
         .project-info {
@@ -171,9 +195,10 @@
 
         .project-info h4 {
             color: #1a202c;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .project-date {
@@ -184,8 +209,8 @@
         }
 
         .project-description {
-            color: #334155;
-            font-size: 1.1rem;
+            color: #4a5568;
+            font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -197,27 +222,34 @@
         }
 
         .project-features li {
-            color: #475569;
+            color: #4a5568;
             font-size: 1rem;
             margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
+            padding-left: 1rem;
             position: relative;
             line-height: 1.5;
+        }
+
+        .project-features li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #4299e1;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .tech-stack span {
             background: #f1f5f9;
-            color: #2563eb;
+            color: #3182ce;
             padding: 0.5rem 1rem;
             border-radius: 9999px;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
         }
 
@@ -230,8 +262,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #2563eb;
+            padding: 0.75rem 1.5rem;
+            background-color: #4299e1;
             color: #ffffff;
             text-decoration: none;
             border-radius: 6px;
@@ -241,12 +273,8 @@
         }
 
         .project-link:hover {
-            background-color: #1d4ed8;
+            background-color: #3182ce;
             transform: translateY(-1px);
-        }
-
-        .project-link i {
-            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -254,8 +282,8 @@
                 padding: 0 1rem;
             }
             
-            .project-image-container {
-                height: 300px;
+            .project-info h4 {
+                font-size: 1.5rem;
             }
         }
 
@@ -1086,7 +1114,10 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard">
+                            <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard" class="project-image">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
                         <div class="project-info">
                             <h4>Chocolate Sales Analysis – Tableau</h4>
@@ -1108,7 +1139,10 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard">
+                            <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard" class="project-image">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
                         <div class="project-info">
                             <h4>Nike USA Sales Analysis</h4>
@@ -1137,7 +1171,10 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard">
+                            <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard" class="project-image">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
                         </div>
                         <div class="project-info">
                             <h4>Spotify Data Analysis</h4>
@@ -1173,7 +1210,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/Automated Data Entry & Form Submission.png" alt="Automated Data Entry & Form Submission">
+                            <img src="assets/job-automation.png" alt="Automated Data Entry & Form Submission" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1204,7 +1241,7 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/Taxi Booking Wireframe Application.png" alt="Taxi Booking Wireframe Application">
+                            <img src="assets/taxi-booking-wireframe.png" alt="Taxi Booking Wireframe Application" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1229,7 +1266,7 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/Budget and Expenses Tracker.png" alt="Budget and Expenses Tracker">
+                            <img src="assets/budget-tracker.png" alt="Budget and Expenses Tracker" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1263,7 +1300,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/WEDM Parameter Optimization Study.png" alt="WEDM Parameter Optimization Study">
+                            <img src="assets/wedm-optimization.png" alt="WEDM Parameter Optimization Study" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1289,7 +1326,7 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/Big Data Analytics - Value & Limitations.png" alt="Big Data Analytics - Value & Limitations">
+                            <img src="assets/big-data-analytics.png" alt="Big Data Analytics - Value & Limitations" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1308,7 +1345,7 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img class="project-image" src="assets/COVID-19 Supply Chain Study.png" alt="COVID-19 Supply Chain Study">
+                            <img src="assets/covid-supply-chain.png" alt="COVID-19 Supply Chain Study" class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>

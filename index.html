@@ -100,14 +100,203 @@
             opacity: 1;
         }
 
-        /* Improved Image Loading */
-        .project-image {
-            opacity: 0;
-            transition: opacity 0.5s;
+        /* Enhanced Project Image Styling */
+        .project-image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            background: #f8fafc;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-image.loaded {
+        .project-image-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .project-image-container:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Placeholder Styling */
+        .project-image-container.placeholder {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image-container.placeholder::before {
+            content: attr(data-project);
+            position: absolute;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #475569;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 1.5rem));
+            z-index: 1;
+        }
+
+        .project-image-container.placeholder::after {
+            content: "🖼️";
+            position: absolute;
+            font-size: 2.5rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% - 1.5rem));
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        /* Enhanced Overlay Styling */
+        .project-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .project-image-overlay span {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-image-container:hover .project-image-overlay {
             opacity: 1;
+        }
+
+        .project-image-container:hover .project-image-overlay span {
+            transform: translateY(0);
+        }
+
+        /* Project Card Enhancements */
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h4 {
+            color: #1e293b;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .project-date {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #475569;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-stack span {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack span:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .project-image-container {
+                aspect-ratio: 16/10;
+            }
+
+            .project-image-container.placeholder::before {
+                font-size: 1.125rem;
+            }
+
+            .project-image-container.placeholder::after {
+                font-size: 2rem;
+            }
+
+            .project-info {
+                padding: 1.25rem;
+            }
+
+            .project-info h4 {
+                font-size: 1.125rem;
+            }
+
+            .project-description {
+                font-size: 0.875rem;
+            }
+
+            .tech-stack span {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
         }
 
         /* Accessibility Improvements */
@@ -141,13 +330,6 @@
             padding: 0 2rem;
         }
 
-        .project-card {
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
         .project-image-container {
             width: 100%;
             aspect-ratio: 16/9;
@@ -155,6 +337,13 @@
             background: #f8fafc;
             overflow: hidden;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .project-image {
@@ -163,6 +352,47 @@
             object-fit: contain;
             background: #f8fafc;
             padding: 1rem;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-image.error {
+            display: none;
+        }
+
+        .project-image-container.placeholder {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .project-image-container.placeholder::before {
+            content: attr(data-project);
+            position: absolute;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #475569;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 1.5rem));
+            z-index: 1;
+        }
+
+        .project-image-container.placeholder::after {
+            content: "🖼️";
+            position: absolute;
+            font-size: 2.5rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% - 1.5rem));
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .project-image-container.has-image::before,
+        .project-image-container.has-image::after {
+            display: none;
         }
 
         .project-image-overlay {
@@ -235,22 +465,6 @@
             position: absolute;
             left: 0;
             color: #4299e1;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-stack span {
-            background: #f1f5f9;
-            color: #3182ce;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
         }
 
         .project-links {
@@ -1114,7 +1328,9 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/chocolate-sales-dashboard.png" alt="Chocolate Sales Dashboard" class="project-image">
+                            <img src="assets/chocolate-sales-dashboard.png" 
+                                 alt="Chocolate Sales Dashboard" 
+                                 class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1139,7 +1355,9 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/nike-sales-dashboard.png" alt="Nike Sales Dashboard" class="project-image">
+                            <img src="assets/nike-sales-dashboard.png" 
+                                 alt="Nike Sales Dashboard" 
+                                 class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1171,7 +1389,9 @@
 
                     <div class="project-card">
                         <div class="project-image-container">
-                            <img src="assets/spotify-analysis-dashboard.png" alt="Spotify Analysis Dashboard" class="project-image">
+                            <img src="assets/spotify-analysis-dashboard.png" 
+                                 alt="Spotify Analysis Dashboard" 
+                                 class="project-image">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1209,8 +1429,7 @@
                 <h3>Automation & Development</h3>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/job-automation.png" alt="Automated Data Entry & Form Submission" class="project-image">
+                        <div class="project-image-container placeholder" data-project="Automated Data Entry System">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1240,8 +1459,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/taxi-booking-wireframe.png" alt="Taxi Booking Wireframe Application" class="project-image">
+                        <div class="project-image-container placeholder" data-project="Taxi Booking Wireframe">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1265,8 +1483,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/budget-tracker.png" alt="Budget and Expenses Tracker" class="project-image">
+                        <div class="project-image-container placeholder" data-project="Budget Tracker Application">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1299,8 +1516,7 @@
                 <h3>Research & Case Studies</h3>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/wedm-optimization.png" alt="WEDM Parameter Optimization Study" class="project-image">
+                        <div class="project-image-container placeholder" data-project="WEDM Optimization Study">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1325,8 +1541,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/big-data-analytics.png" alt="Big Data Analytics - Value & Limitations" class="project-image">
+                        <div class="project-image-container placeholder" data-project="Big Data Analytics Research">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1344,8 +1559,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="assets/covid-supply-chain.png" alt="COVID-19 Supply Chain Study" class="project-image">
+                        <div class="project-image-container placeholder" data-project="COVID-19 Supply Chain Analysis">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>

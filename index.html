@@ -15,17 +15,35 @@
             overflow: hidden;
             border-radius: 8px;
             margin-bottom: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .project-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
         
-        .project-image img:hover {
+        .project-image:hover img {
             transform: scale(1.05);
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
         }
         /* ... existing styles ... */
     </style>
@@ -508,7 +526,7 @@
             <div class="project-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.imgur.com/QW2mBzN.png" alt="Chocolate Sales Dashboard showing monthly trends, global distribution, and product performance metrics">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzM0OThkYiIvPjx0ZXh0IHg9IjQwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5OaWtlIFNhbGVzIERhc2hib2FyZDwvdGV4dD48L3N2Zz4=" alt="Chocolate Sales Dashboard showing monthly trends, global distribution, and product performance metrics">
                     </div>
                     <div class="project-info">
                         <h4>Chocolate Sales Analysis – Tableau</h4>
@@ -530,7 +548,7 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.imgur.com/ZWnhX9t.png" alt="Nike Sales Dashboard showing geographical distribution, product performance metrics, and sales trends across US cities">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFkYjk1NCIvPjx0ZXh0IHg9IjQwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TcG90aWZ5IE11c2ljIEFuYWx5c2lzPC90ZXh0Pjwvc3ZnPg==" alt="Nike Sales Dashboard showing geographical distribution, product performance metrics, and sales trends across US cities">
                     </div>
                     <div class="project-info">
                         <h4>Nike USA Sales Analysis</h4>
@@ -559,7 +577,7 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.imgur.com/kJXRIKd.png" alt="Spotify Music Analysis Dashboard showing streaming trends, artist performance, and track metrics">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFkYjk1NCIvPjx0ZXh0IHg9IjQwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TcG90aWZ5IE11c2ljIEFuYWx5c2lzPC90ZXh0Pjwvc3ZnPg==" alt="Spotify Music Analysis Dashboard showing streaming trends, artist performance, and track metrics">
                     </div>
                     <div class="project-info">
                         <h4>Spotify Data Analysis</h4>
@@ -727,20 +745,61 @@
         <h2>Get In Touch</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <a href="mailto:your.email@example.com" class="contact-item">
+                <a href="mailto:krishnavyasd@gmail.com" class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>your.email@example.com</span>
+                    <span>krishnavyasd@gmail.com</span>
+                </a>
+                <a href="tel:+15627193609" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (562) 719-3609</span>
                 </a>
                 <a href="https://github.com/krishnavyas36" class="contact-item">
                     <i class="fab fa-github"></i>
                     <span>GitHub</span>
                 </a>
-                <a href="https://linkedin.com/in/yourusername" class="contact-item">
+                <a href="https://linkedin.com/in/krishnavyas-desugari-55752319b" class="contact-item">
                     <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
             </div>
         </div>
+        <style>
+            .contact-info {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                padding: 15px 20px;
+                background: #ffffff;
+                border-radius: 8px;
+                text-decoration: none;
+                color: #333;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .contact-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+            
+            .contact-item i {
+                font-size: 24px;
+                color: #2563eb;
+            }
+            
+            .contact-item span {
+                font-size: 16px;
+            }
+        </style>
     </section>
 
     <!-- Footer -->

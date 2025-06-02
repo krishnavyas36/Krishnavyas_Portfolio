@@ -528,13 +528,16 @@
                 border-radius: 10px;
                 padding: 2rem;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-bottom: 2rem;
             }
 
             .cert-category h3 {
-                color: #2563eb;
+                color: #1e40af;
+                font-size: 1.5rem;
+                font-weight: 600;
                 margin-bottom: 1.5rem;
                 padding-bottom: 0.5rem;
-                border-bottom: 2px solid #e5e7eb;
+                border-bottom: 2px solid #3b82f6;
             }
 
             .cert-list {
@@ -543,70 +546,84 @@
             }
 
             .cert-item {
-                padding: 1rem;
                 background: #f8fafc;
                 border-radius: 8px;
+                padding: 1.5rem;
                 border-left: 4px solid #2563eb;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             }
 
             .cert-item h4 {
                 color: #1e293b;
-                margin-bottom: 0.5rem;
+                font-size: 1.125rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
             }
 
             .cert-item p {
-                margin: 0.25rem 0;
-                color: #64748b;
+                margin: 0.5rem 0;
+                color: #334155;
+                font-size: 1rem;
+                line-height: 1.5;
             }
 
             .cert-item .issuer {
-                font-weight: 500;
-                color: #334155;
+                font-weight: 600;
+                color: #1e293b;
             }
 
             .cert-item .date {
                 font-size: 0.9rem;
+                color: #475569;
+                font-weight: 500;
             }
 
             .cert-item .credential {
-                font-family: monospace;
+                font-family: 'Consolas', monospace;
                 font-size: 0.9rem;
-                color: #6b7280;
+                color: #1e293b;
+                background: #e2e8f0;
+                padding: 0.5rem 0.75rem;
+                border-radius: 4px;
+                display: inline-block;
+                margin: 0.5rem 0;
+                border: 1px solid #cbd5e1;
             }
 
             .cert-modules {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0.5rem;
-                margin-top: 0.75rem;
+                margin-top: 1rem;
             }
 
             .cert-modules span {
-                background: #e5e7eb;
-                padding: 0.25rem 0.75rem;
+                background: #e2e8f0;
+                color: #1e293b;
+                padding: 0.5rem 1rem;
                 border-radius: 9999px;
                 font-size: 0.875rem;
-                color: #374151;
+                font-weight: 500;
+                border: 1px solid #cbd5e1;
             }
 
             .cert-link {
                 display: inline-block;
-                margin-top: 0.75rem;
-                padding: 0.5rem 1rem;
+                margin-top: 1rem;
+                padding: 0.75rem 1.5rem;
                 background-color: #2563eb;
                 color: white;
                 text-decoration: none;
                 border-radius: 6px;
                 font-size: 0.875rem;
-                transition: background-color 0.3s ease;
+                font-weight: 500;
+                transition: all 0.3s ease;
             }
             
             .cert-link:hover {
                 background-color: #1d4ed8;
-            }
-            
-            .cert-link i {
-                margin-right: 0.5rem;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             @media (min-width: 768px) {
@@ -618,6 +635,10 @@
             @media (max-width: 767px) {
                 .cert-category {
                     padding: 1.5rem;
+                }
+                
+                .cert-item {
+                    padding: 1.25rem;
                 }
             }
         </style>
@@ -934,200 +955,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Technical Skills & Expertise</h2>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Data Science & Machine Learning</h3>
-                <div class="skill-tags">
-                    <span>Machine Learning</span>
-                    <span>Deep Learning</span>
-                    <span>CNN</span>
-                    <span>RNN</span>
-                    <span>Random Forest</span>
-                    <span>Predictive Analytics</span>
-                    <span>Statistical Analysis</span>
-                    <span>Multivariate Analysis</span>
-                    <span>Data Mining</span>
-                    <span>Large Language Models (LLM)</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Data Analysis & Visualization</h3>
-                <div class="skill-tags">
-                    <span>Power BI</span>
-                    <span>Tableau</span>
-                    <span>Alteryx</span>
-                    <span>IBM SPSS</span>
-                    <span>Microsoft Excel</span>
-                    <span>Data Visualization</span>
-                    <span>Statistical Data Analysis</span>
-                    <span>Business Analytics</span>
-                    <span>Business Intelligence (BI)</span>
-                    <span>Forecasting</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Programming & Development</h3>
-                <div class="skill-tags">
-                    <span>Python</span>
-                    <span>Django</span>
-                    <span>pandas</span>
-                    <span>scikit-learn</span>
-                    <span>Matplotlib</span>
-                    <span>Seaborn</span>
-                    <span>Streamlit</span>
-                    <span>Prophet</span>
-                    <span>DuckDB</span>
-                    <span>C Programming</span>
-                    <span>File Handling</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Database & Cloud Technologies</h3>
-                <div class="skill-tags">
-                    <span>SQL</span>
-                    <span>MongoDB</span>
-                    <span>Oracle Database</span>
-                    <span>DBMS</span>
-                    <span>ER Modeling</span>
-                    <span>Transaction Management</span>
-                    <span>Amazon Web Services (AWS)</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Automation & Testing</h3>
-                <div class="skill-tags">
-                    <span>Selenium</span>
-                    <span>Selenium WebDriver</span>
-                    <span>Web Scraping</span>
-                    <span>Automation</span>
-                    <span>SMTP</span>
-                    <span>Quality Assurance</span>
-                    <span>Troubleshooting</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Project Management & Business</h3>
-                <div class="skill-tags">
-                    <span>Agile Methodologies</span>
-                    <span>Project Management</span>
-                    <span>Business Analysis</span>
-                    <span>Requirements Management</span>
-                    <span>Business Process Improvement</span>
-                    <span>Supply Chain Management</span>
-                    <span>Operations Management</span>
-                    <span>Project Scheduling</span>
-                    <span>Business Ethics</span>
-                    <span>Management Information Systems (MIS)</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Engineering & Design</h3>
-                <div class="skill-tags">
-                    <span>SOLIDWORKS</span>
-                    <span>AutoCAD</span>
-                    <span>Finite Element Analysis (FEA)</span>
-                    <span>Computational Fluid Dynamics (CFD)</span>
-                    <span>Machine Design</span>
-                    <span>Industrial Design</span>
-                    <span>Rapid Prototyping</span>
-                    <span>Metrology</span>
-                    <span>Fluid Mechanics</span>
-                    <span>Heat Transfer</span>
-                    <span>Machine Tools</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Soft Skills</h3>
-                <div class="skill-tags">
-                    <span>Leadership</span>
-                    <span>Communication</span>
-                    <span>Critical Thinking</span>
-                    <span>Problem Solving</span>
-                    <span>Teamwork</span>
-                    <span>Public Speaking</span>
-                    <span>Negotiation</span>
-                    <span>Analytical Skills</span>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            .skills {
-                padding: 4rem 2rem;
-                background: #f8fafc;
-            }
-
-            .skills-grid {
-                display: grid;
-                gap: 2rem;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .skill-category {
-                background: white;
-                padding: 1.5rem;
-                border-radius: 10px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            }
-
-            .skill-category h3 {
-                color: #2563eb;
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid #e5e7eb;
-            }
-
-            .skill-tags {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-
-            .skill-tags span {
-                background: #f1f5f9;
-                color: #334155;
-                padding: 0.5rem 1rem;
-                border-radius: 9999px;
-                font-size: 0.875rem;
-                transition: all 0.3s ease;
-            }
-
-            .skill-tags span:hover {
-                background: #2563eb;
-                color: white;
-                transform: translateY(-2px);
-            }
-
-            @media (min-width: 768px) {
-                .skills-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            @media (max-width: 767px) {
-                .skills {
-                    padding: 2rem 1rem;
-                }
-                
-                .skill-category {
-                    padding: 1rem;
-                }
-            }
-        </style>
     </section>
 
     <!-- Contact Section -->

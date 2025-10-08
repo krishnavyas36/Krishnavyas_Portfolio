@@ -455,7 +455,8 @@ nav {
     margin: 0;
 }
 
-.project-toggle {
+.project-toggle,
+.cert-toggle {
     width: 100%;
     display: flex;
     align-items: center;
@@ -472,16 +473,19 @@ nav {
     transition: color var(--transition);
 }
 
-.project-toggle:hover {
+.project-toggle:hover,
+.cert-toggle:hover {
     color: var(--secondary-color);
 }
 
-.project-toggle:focus-visible {
+.project-toggle:focus-visible,
+.cert-toggle:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 4px;
 }
 
-.project-toggle-text {
+.project-toggle-text,
+.cert-toggle-text {
     flex: 1;
 }
 
@@ -489,7 +493,8 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.project-category.collapsed .toggle-icon i {
+.project-category.collapsed .toggle-icon i,
+.cert-category.collapsed .toggle-icon i {
     transform: rotate(180deg);
 }
 
@@ -686,7 +691,8 @@ nav {
 }
 
 @media (max-width: 768px) {
-    .project-toggle {
+    .project-toggle,
+    .cert-toggle {
         font-size: 1.3rem;
         padding: 1rem 0;
     }
@@ -973,16 +979,37 @@ footer {
 }
 
 .cert-category {
-    max-width: 1200px;
-    margin: 0 auto 4rem;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--transition), transform var(--transition);
 }
 
-.cert-category h3 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--section-bg);
+.cert-category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+}
+
+.cert-category-title {
+    margin: 0;
+}
+
+.cert-category.collapsed {
+    padding-bottom: 1.25rem;
+}
+
+.cert-category.collapsed .cert-list,
+.cert-category.collapsed .cert-grid {
+    display: none;
+}
+
+.cert-list,
+.cert-grid {
+    margin-top: 1.25rem;
 }
 
 .cert-grid {
@@ -1051,11 +1078,7 @@ footer {
     }
     
     .cert-category {
-        margin-bottom: 3rem;
-    }
-    
-    .cert-category h3 {
-        font-size: 1.5rem;
+        padding: 1.25rem 1.5rem;
     }
 }
 

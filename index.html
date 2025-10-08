@@ -262,10 +262,10 @@
 
     <!-- Header Section -->
     <header>
-        <nav>
-            <div class="logo">KVD</div>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
+        <nav role="navigation" aria-label="Main navigation">
+            <a class="logo" href="#home" aria-label="Home">KVD</a>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -1408,19 +1408,34 @@
             // Mobile Navigation
             const navToggle = document.querySelector('.mobile-nav-toggle');
             const navLinks = document.querySelector('.nav-links');
-            
+
+            function setNavExpanded(isExpanded) {
+                navToggle.setAttribute('aria-expanded', String(!!isExpanded));
+                if (isExpanded) navLinks.classList.add('active'); else navLinks.classList.remove('active');
+            }
+
             navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const isExpanded = navLinks.classList.contains('active');
-                navToggle.setAttribute('aria-expanded', isExpanded);
+                setNavExpanded(!navLinks.classList.contains('active'));
+            });
+
+            // keyboard activation for hamburger (Enter / Space)
+            navToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setNavExpanded(!navLinks.classList.contains('active'));
+                }
             });
 
             // Close mobile nav when clicking outside
             document.addEventListener('click', (e) => {
                 if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
+                    setNavExpanded(false);
                 }
+            });
+
+            // Prevent closing when clicking inside nav
+            navLinks.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
 
             // Smooth Scrolling
@@ -1438,6 +1453,23 @@
                     }
                 });
             });
+
+            // Scrollspy: highlight nav links based on section in view
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector('.nav-links a[href="#' + id + '"]');
+                    if (entry.isIntersecting) {
+                        navItems.forEach(i => i.classList.remove('active'));
+                        if (navLink) navLink.classList.add('active');
+                    }
+                });
+            }, { root: null, threshold: 0.55 });
+
+            sections.forEach(s => sectionObserver.observe(s));
 
             // Back to Top Button
             const backToTop = document.querySelector('.back-to-top');

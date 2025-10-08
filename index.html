@@ -5,11 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Krishnavyas Desugari | Portfolio</title>
     <meta name="description" content="Data analyst and product strategist delivering BI dashboards, machine learning prototypes, and operational automation.">
+    <meta name="author" content="Krishnavyas Desugari">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="canonical" href="https://krishnavyas.com/">
+    <meta property="og:site_name" content="Krishnavyas Desugari Portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://krishnavyas.com/">
+    <meta property="og:title" content="Krishnavyas Desugari | Data Analyst & Product Strategist">
+    <meta property="og:description" content="Data analyst and product strategist delivering BI dashboards, machine learning prototypes, and operational automation.">
+    <meta property="og:image" content="https://krishnavyas.com/assets/spotify-analysis-dashboard.png">
+    <meta property="og:image:alt" content="Dashboard work by Krishnavyas Desugari">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Krishnavyas Desugari | Data Analyst & Product Strategist">
+    <meta name="twitter:description" content="Data analyst and product strategist delivering BI dashboards, machine learning prototypes, and operational automation.">
+    <meta name="twitter:image" content="https://krishnavyas.com/assets/spotify-analysis-dashboard.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Krishnavyas Desugari",
+        "url": "https://krishnavyas.com/",
+        "image": "https://krishnavyas.com/assets/spotify-analysis-dashboard.png",
+        "jobTitle": "Data Analyst and Product Strategist",
+        "description": "Data analyst and product strategist delivering BI dashboards, machine learning prototypes, and operational automation.",
+        "email": "mailto:krishnavyasd@gmail.com",
+        "telephone": "+1-562-719-3609",
+        "sameAs": [
+            "https://linkedin.com/in/krishnavyas-desugari-55752319b",
+            "https://github.com/krishnavyas36"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        }
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -41,7 +78,7 @@
     <main id="main">
         <section id="home" class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
-                <p class="achievements">BI dashboards · ML prototypes · Operations automation</p>
+                <p class="achievements">BI dashboards &middot; ML prototypes &middot; Operations automation</p>
                 <h1 id="hero-heading">Hi, I'm <span class="highlight">Krishnavyas Desugari</span></h1>
                 <p class="subtitle">Data analyst and product-focused technologist turning complex datasets into decisions for universities, startups, and enterprise teams.</p>
                 <a class="cta-button" href="#projects">Explore the portfolio</a>
@@ -54,7 +91,7 @@
                 <div class="about-text">
                     <p>I combine business operations, analytics, and product research to help teams ship insights that stick. From AI security reviews to 500+ Chegg solutions, my work focuses on clarity, repeatability, and measurable impact.</p>
                     <ul class="experience-list">
-                        <li>Translate ambiguous questions into dashboards adopted by WalletGyde, California State University – Long Beach, and BSC &amp; A Partners.</li>
+                        <li>Translate ambiguous questions into dashboards adopted by WalletGyde, California State University &ndash; Long Beach, and BSC &amp; A Partners.</li>
                         <li>Blend BI tooling, statistical modeling, and automation to speed up planning cycles and improve data quality.</li>
                         <li>Partner with cross-functional stakeholders, turning feedback loops into documentation, enablement, and scalable playbooks.</li>
                     </ul>
@@ -83,8 +120,13 @@
         <section id="projects" class="projects">
             <h2>Projects</h2>
             <div class="project-category">
-                <h3>Business Intelligence & Analytics</h3>
-                <div class="project-grid">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-business-intelligence-analytics">
+                        <span class="project-toggle-text">Business Intelligence & Analytics</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-business-intelligence-analytics">
                     <div class="project-card">
                         <div class="project-image-container">
                        <img src="assets/spotify-analysis-dashboard.png" 
@@ -167,7 +209,7 @@
                             </div>
                         </div>
                         <div class="project-info">
-                            <h4>Chocolate Sales Analysis – Tableau</h4>
+                            <h4>Chocolate Sales Analysis &ndash; Tableau</h4>
                             <p class="project-date">Mar 2025 - Apr 2025</p>
                             <p class="project-description">Created an interactive Tableau dashboard analyzing global chocolate sales performance with detailed metrics and geographical insights.</p>
                             <ul class="project-features">
@@ -188,8 +230,13 @@
             </div>
 
             <div class="project-category">
-                <h3>Data Science & Statistical Analysis</h3>
-                <div class="project-grid">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-data-science-statistical-analysis">
+                        <span class="project-toggle-text">Data Science & Statistical Analysis</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-data-science-statistical-analysis">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
                             <div class="project-thumb-inner">YT</div>
@@ -249,9 +296,275 @@
                 </div>
             </div>
 
+            
+
+            <!-- Additional Projects added from user's project list -->
             <div class="project-category">
-                <h3>Research & Case Studies</h3>
-                <div class="project-grid">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-automation-tooling">
+                        <span class="project-toggle-text">Automation & Tooling</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-automation-tooling">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">JOB</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Daily Job Tracker</h4>
+                            <p class="project-date">Jun 2025 &ndash; Jul 2025</p>
+                            <p class="project-description">Automated daily scraper that collects remote job listings (Data Analyst, BI, Data Scientist) from RemoteOK and USAJobs.gov and pushes structured listings into a Google Sheet via GitHub Actions.</p>
+                            <ul class="project-features">
+                                <li>Scheduled GitHub Actions workflow running daily at 5 PM PST</li>
+                                <li>Filters jobs by relevance and preserves structured metadata</li>
+                                <li>Targets remote-friendly roles and maintains an accessible tracker for applications</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Requests</span>
+                                <span>BeautifulSoup</span>
+                                <span>Google Sheets API</span>
+                                <span>GitHub Actions</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/daily-job-tracker" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">BOT</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Automated Data Entry & Form Submission Tool</h4>
+                            <p class="project-date">Feb 2025</p>
+                            <p class="project-description">Python automation using Selenium and Requests to scrape visa-sponsoring company career pages and auto-fill application forms, cutting manual effort by ~90%.</p>
+                            <ul class="project-features">
+                                <li>Career-page scraping using SERPAPI & BeautifulSoup</li>
+                                <li>Automated form filling with Selenium WebDriver</li>
+                                <li>Excel processing with pandas & OpenPyXL for dynamic company lookups</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Selenium</span>
+                                <span>pandas</span>
+                                <span>OpenPyXL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">FIN</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Budget & Expenses Tracker App</h4>
+                            <p class="project-date">Jan 2024 &ndash; Mar 2024</p>
+                            <p class="project-description">A CRUD-enabled budgeting app using Python and pandas to integrate with Excel for data storage and analysis.</p>
+                            <ul class="project-features">
+                                <li>CRUD operations for budgets and expense entries</li>
+                                <li>Excel integration for persistence and analysis</li>
+                                <li>Reporting views for monthly spending trends</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>pandas</span>
+                                <span>Excel</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Budget-Tracker-and-Analysis" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-supply-chain-operations">
+                        <span class="project-toggle-text">Supply Chain & Operations</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-supply-chain-operations">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">CHAIN</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>TrustChain &mdash; AI & Blockchain Supply Chain Verification</h4>
+                            <p class="project-date">Jan 2025 &ndash; May 2025</p>
+                            <p class="project-description">Enterprise SaaS prototype combining AI, blockchain, and IoT for product verification and supplier compliance in ethical fashion supply chains.</p>
+                            <ul class="project-features">
+                                <li>Designed dashboard UI in Figma and simulated compliance data</li>
+                                <li>Built Tableau dashboards to visualize provenance and verification metrics</li>
+                                <li>Validated monetization scenarios: tiered SaaS and API licensing</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Figma</span>
+                                <span>Tableau</span>
+                                <span>AI</span>
+                                <span>Blockchain (concept)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">AI</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>AI Logistics Optimization Agent</h4>
+                            <p class="project-date">Apr 2025 &ndash; May 2025</p>
+                            <p class="project-description">Interactive ML-powered recommender for optimal delivery mode (LTL, TL, Drayage, Transload) with cost/ETA estimation and confidence scoring.</p>
+                            <ul class="project-features">
+                                <li>Streamlit UI with filtering, visualization and retraining options</li>
+                                <li>Combined ML models and rule-based logic for safe recommendations</li>
+                                <li>Decision logs for continuous learning and performance monitoring</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>scikit-learn</span>
+                                <span>pandas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/AI_agent" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-machine-learning-research">
+                        <span class="project-toggle-text">Machine Learning & Research</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-machine-learning-research">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">CV</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Facial Expression Recognition &mdash; Emotion Analysis</h4>
+                            <p class="project-date">Aug 2024 &ndash; Dec 2024</p>
+                            <p class="project-description">Classified FER2013 images into seven emotions; used data augmentation and hyperparameter tuning to improve accuracy.</p>
+                            <ul class="project-features">
+                                <li>Trained CNN models on 35,000+ images</li>
+                                <li>Improved performance by ~20% with augmentation</li>
+                                <li>Explored applications in healthcare and customer service</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>TensorFlow</span>
+                                <span>CNN</span>
+                                <span>Data Augmentation</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Facial_expression_rcognition" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">NLP</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Real-Time News Popularity Forecasting</h4>
+                            <p class="project-date">Aug 2024 &ndash; Dec 2024</p>
+                            <p class="project-description">Forecasted article popularity using historical Mashable data and engineered features to achieve ~73% accuracy.</p>
+                            <ul class="project-features">
+                                <li>Feature engineering for timing and keywords</li>
+                                <li>Ensembled models including Random Forests and Deep Learning</li>
+                                <li>Produced actionable recommendations for content strategy</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Random Forest</span>
+                                <span>Feature Engineering</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Deep_learning_structured" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-ux-domain-projects">
+                        <span class="project-toggle-text">UX & Domain Projects</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-ux-domain-projects">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">UX</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Taxi Booking Wireframe Application</h4>
+                            <p class="project-date">Jan 2025</p>
+                            <p class="project-description">Wireframe prototype for a taxi booking app emphasizing fare estimation, real-time tracking, and driver ratings; designed in Figma and JustInMind.</p>
+                            <ul class="project-features">
+                                <li>Interactive prototypes with usability focus</li>
+                                <li>User research and competitor analysis</li>
+                                <li>Iterative design refinements based on feedback</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">PM</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Exide DTSC Clean-Up &ndash; Project Management App</h4>
+                            <p class="project-date">Aug 2024 &ndash; Dec 2024</p>
+                            <p class="project-description">Acted as Product Owner for a cleanup-tracking web app; led 5+ sprints and delivered with high stakeholder satisfaction.</p>
+                            <ul class="project-features">
+                                <li>Sprint planning and stakeholder coordination</li>
+                                <li>Delivered reporting and tracking dashboards</li>
+                                <li>Achieved 95% on-time delivery per stakeholder acceptance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">CRM</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Contacts App</h4>
+                            <p class="project-date">Aug 2023 &ndash; Oct 2023</p>
+                            <p class="project-description">A CRUD-based contacts management application built with Django to efficiently create, read, update, and delete contacts.</p>
+                            <ul class="project-features">
+                                <li>User-friendly interface for contact operations</li>
+                                <li>Backend implemented in Django with RESTful patterns</li>
+                                <li>Search and filtering capabilities</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Krishna_vyas" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="project-category-title">
+                    <button class="project-toggle" type="button" aria-expanded="true" aria-controls="project-group-research-case-studies">
+                        <span class="project-toggle-text">Research & Case Studies</span>
+                        <span class="toggle-icon" aria-hidden="true"><i class="fas fa-chevron-up"></i></span>
+                    </button>
+                </h3>
+                <div class="project-grid" id="project-group-research-case-studies">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
                             <div class="project-thumb-inner">WEDM</div>
@@ -308,244 +621,6 @@
                 </div>
             </div>
 
-            <!-- Additional Projects added from user's project list -->
-            <div class="project-category">
-                <h3>Automation & Tooling</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">JOB</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Daily Job Tracker</h4>
-                            <p class="project-date">Jun 2025 – Jul 2025</p>
-                            <p class="project-description">Automated daily scraper that collects remote job listings (Data Analyst, BI, Data Scientist) from RemoteOK and USAJobs.gov and pushes structured listings into a Google Sheet via GitHub Actions.</p>
-                            <ul class="project-features">
-                                <li>Scheduled GitHub Actions workflow running daily at 5 PM PST</li>
-                                <li>Filters jobs by relevance and preserves structured metadata</li>
-                                <li>Targets remote-friendly roles and maintains an accessible tracker for applications</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Requests</span>
-                                <span>BeautifulSoup</span>
-                                <span>Google Sheets API</span>
-                                <span>GitHub Actions</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/daily-job-tracker" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">BOT</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Automated Data Entry & Form Submission Tool</h4>
-                            <p class="project-date">Feb 2025</p>
-                            <p class="project-description">Python automation using Selenium and Requests to scrape visa-sponsoring company career pages and auto-fill application forms, cutting manual effort by ~90%.</p>
-                            <ul class="project-features">
-                                <li>Career-page scraping using SERPAPI & BeautifulSoup</li>
-                                <li>Automated form filling with Selenium WebDriver</li>
-                                <li>Excel processing with pandas & OpenPyXL for dynamic company lookups</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Selenium</span>
-                                <span>pandas</span>
-                                <span>OpenPyXL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">FIN</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Budget & Expenses Tracker App</h4>
-                            <p class="project-date">Jan 2024 – Mar 2024</p>
-                            <p class="project-description">A CRUD-enabled budgeting app using Python and pandas to integrate with Excel for data storage and analysis.</p>
-                            <ul class="project-features">
-                                <li>CRUD operations for budgets and expense entries</li>
-                                <li>Excel integration for persistence and analysis</li>
-                                <li>Reporting views for monthly spending trends</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>pandas</span>
-                                <span>Excel</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/Budget-Tracker-and-Analysis" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>Supply Chain & Operations</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">CHAIN</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>TrustChain — AI & Blockchain Supply Chain Verification</h4>
-                            <p class="project-date">Jan 2025 – May 2025</p>
-                            <p class="project-description">Enterprise SaaS prototype combining AI, blockchain, and IoT for product verification and supplier compliance in ethical fashion supply chains.</p>
-                            <ul class="project-features">
-                                <li>Designed dashboard UI in Figma and simulated compliance data</li>
-                                <li>Built Tableau dashboards to visualize provenance and verification metrics</li>
-                                <li>Validated monetization scenarios: tiered SaaS and API licensing</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Figma</span>
-                                <span>Tableau</span>
-                                <span>AI</span>
-                                <span>Blockchain (concept)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">AI</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>AI Logistics Optimization Agent</h4>
-                            <p class="project-date">Apr 2025 – May 2025</p>
-                            <p class="project-description">Interactive ML-powered recommender for optimal delivery mode (LTL, TL, Drayage, Transload) with cost/ETA estimation and confidence scoring.</p>
-                            <ul class="project-features">
-                                <li>Streamlit UI with filtering, visualization and retraining options</li>
-                                <li>Combined ML models and rule-based logic for safe recommendations</li>
-                                <li>Decision logs for continuous learning and performance monitoring</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Streamlit</span>
-                                <span>scikit-learn</span>
-                                <span>pandas</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/AI_agent" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>Machine Learning & Research</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">CV</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Facial Expression Recognition — Emotion Analysis</h4>
-                            <p class="project-date">Aug 2024 – Dec 2024</p>
-                            <p class="project-description">Classified FER2013 images into seven emotions; used data augmentation and hyperparameter tuning to improve accuracy.</p>
-                            <ul class="project-features">
-                                <li>Trained CNN models on 35,000+ images</li>
-                                <li>Improved performance by ~20% with augmentation</li>
-                                <li>Explored applications in healthcare and customer service</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>TensorFlow</span>
-                                <span>CNN</span>
-                                <span>Data Augmentation</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/Facial_expression_rcognition" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">NLP</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Real-Time News Popularity Forecasting</h4>
-                            <p class="project-date">Aug 2024 – Dec 2024</p>
-                            <p class="project-description">Forecasted article popularity using historical Mashable data and engineered features to achieve ~73% accuracy.</p>
-                            <ul class="project-features">
-                                <li>Feature engineering for timing and keywords</li>
-                                <li>Ensembled models including Random Forests and Deep Learning</li>
-                                <li>Produced actionable recommendations for content strategy</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Random Forest</span>
-                                <span>Feature Engineering</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/Deep_learning_structured" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>UX & Domain Projects</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">UX</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Taxi Booking Wireframe Application</h4>
-                            <p class="project-date">Jan 2025</p>
-                            <p class="project-description">Wireframe prototype for a taxi booking app emphasizing fare estimation, real-time tracking, and driver ratings; designed in Figma and JustInMind.</p>
-                            <ul class="project-features">
-                                <li>Interactive prototypes with usability focus</li>
-                                <li>User research and competitor analysis</li>
-                                <li>Iterative design refinements based on feedback</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">PM</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Exide DTSC Clean-Up &ndash; Project Management App</h4>
-                            <p class="project-date">Aug 2024 &ndash; Dec 2024</p>
-                            <p class="project-description">Acted as Product Owner for a cleanup-tracking web app; led 5+ sprints and delivered with high stakeholder satisfaction.</p>
-                            <ul class="project-features">
-                                <li>Sprint planning and stakeholder coordination</li>
-                                <li>Delivered reporting and tracking dashboards</li>
-                                <li>Achieved 95% on-time delivery per stakeholder acceptance</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">CRM</div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Contacts App</h4>
-                            <p class="project-date">Aug 2023 &ndash; Oct 2023</p>
-                            <p class="project-description">A CRUD-based contacts management application built with Django to efficiently create, read, update, and delete contacts.</p>
-                            <ul class="project-features">
-                                <li>User-friendly interface for contact operations</li>
-                                <li>Backend implemented in Django with RESTful patterns</li>
-                                <li>Search and filtering capabilities</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/Krishna_vyas" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </section>
 
@@ -582,12 +657,12 @@
         <!-- Education Section -->
         <section id="education" class="education">
             <h2>Education</h2>
-            <div class="education-grid">
+            <div class="education-grid education-timeline">
                 <div class="education-card">
                     <div class="education-info">
                         <h3>Master of Science - MS, Management Information Systems</h3>
                         <p class="school">California State University-Long Beach - College of Business</p>
-                        <p class="duration">Aug 2023 – May 2025</p>
+                        <p class="duration">Aug 2023 &ndash; May 2025</p>
                         <p class="grade">GPA: 3.9</p>
                         <div class="education-skills">
                             <span>Data Analysis</span>
@@ -628,7 +703,7 @@
                     <div class="education-info">
                         <h3>Applied AI: Deep Learning for Computer Vision</h3>
                         <p class="school">WorldQuant University</p>
-                        <p class="duration">Jul 2025 – Present</p>
+                        <p class="duration">Jul 2025 &ndash; Present</p>
                         <div class="education-skills">
                             <span>Artificial Intelligence (AI)</span>
                             <span>Deep Learning</span>
@@ -660,7 +735,7 @@
                 <div class="experience-card">
                     <div class="experience-info">
                         <h3>AI Data & Security Intern</h3>
-                        <p class="company">WalletGyde · Part-time</p>
+                        <p class="company">WalletGyde &middot; Part-time</p>
                         <p class="duration">Aug 2025 - Present</p>
                         <ul class="experience-list">
                             <li>Supported data security reviews and implemented safeguards for ML model inputs and outputs.</li>
@@ -692,9 +767,9 @@
                 <div class="experience-card">
                     <div class="experience-info">
                         <h3>Data Analyst</h3>
-                        <p class="company">BSC & A Partners · Full-time</p>
+                        <p class="company">BSC & A Partners &middot; Full-time</p>
                         <p class="duration">May 2022 - Aug 2023</p>
-                        <p class="location">India · On-site</p>
+                        <p class="location">India &middot; On-site</p>
                         <ul class="experience-list">
                             <li>Automated routine reports, slashing turnaround time by 35% and recovering 15+ analyst hours monthly.</li>
                             <li>Partnered with cross-functional teams to define scalable data templates, reducing late-stage revision cycles by 40%.</li>
@@ -715,7 +790,7 @@
                         <h3>Subject Matter Expert</h3>
                         <p class="company">Chegg India</p>
                         <p class="duration">Oct 2020 - Aug 2023</p>
-                        <p class="location">India · Remote</p>
+                        <p class="location">India &middot; Remote</p>
                         <ul class="experience-list">
                             <li>Solved 500+ advanced statistics and data science problems, including ANOVA, t-tests, chi-square tests, regression modeling, and hypothesis testing, delivering accurate step-by-step solutions.</li>
                             <li>Applied Excel to perform data cleaning, transformation, and statistical analysis for large datasets, improving solution accuracy and reducing computation errors.</li>
@@ -729,11 +804,11 @@
                 <div class="experience-card">
                     <div class="experience-info">
                         <h3>Internshala Student Partner</h3>
-                        <p class="company">Internshala · Internship</p>
+                        <p class="company">Internshala &middot; Internship</p>
                         <p class="duration">Oct 2021 - Dec 2021</p>
                         <p class="location">India</p>
                         <ul class="experience-list">
-                            <li>Educated over 200 students about Internshala’s resources, programs, and services.</li>
+                            <li>Educated over 200 students about Internshala's resources, programs, and services.</li>
                             <li>Coordinated 3 workshops, 6 information sessions and interview preparation events.</li>
                             <li>Collaborated with 20 academic staff and guidance counselors to enhance student success.</li>
                         </ul>
@@ -1126,7 +1201,7 @@
     </footer>
 
     <!-- Add this at the end of the body tag -->
-    <button class="back-to-top" aria-label="Back to top">↑</button>
+    <button class="back-to-top" aria-label="Back to top">&#8593;</button>
     <div id="imageModal" class="modal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
@@ -1217,6 +1292,29 @@
             }, { root: null, threshold: 0.55 });
 
             sections.forEach(s => sectionObserver.observe(s));
+
+            // Project category dropdown controls
+            const projectCategories = document.querySelectorAll('.project-category');
+            projectCategories.forEach((category, index) => {
+                const toggle = category.querySelector('.project-toggle');
+                const grid = category.querySelector('.project-grid');
+
+                if (!toggle || !grid) return;
+
+                if (!grid.id) {
+                    const generatedId = `project-group-${index}`;
+                    grid.id = generatedId;
+                    toggle.setAttribute('aria-controls', generatedId);
+                }
+
+                category.classList.toggle('collapsed', toggle.getAttribute('aria-expanded') === 'false');
+
+                toggle.addEventListener('click', () => {
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', String(!isExpanded));
+                    category.classList.toggle('collapsed', isExpanded);
+                });
+            });
 
             // Back to Top Button
             const backToTop = document.querySelector('.back-to-top');

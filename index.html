@@ -2,125 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Krishnavyas Desugari - Data & Business Analytics Professional Portfolio showcasing projects, skills, and experience in data analysis, machine learning, and business intelligence.">
-    <title>Krishnavyas Desugari - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Loading Animation */
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
-        }
-
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 5px solid #2563eb;
-            border-bottom-color: transparent;
-            border-radius: 50%;
-            animation: rotation 1s linear infinite;
-        }
-
-        @keyframes rotation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile Navigation */
-        .mobile-nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: #333;
-            z-index: 1000;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-nav-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: 0;
-                height: 100vh;
-                width: 250px;
-                background: #ffffff;
-                padding: 2rem;
-                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-                flex-direction: column;
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 1rem 0;
-            }
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2563eb;
-            color: #ffffff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 998;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        /* Enhanced Project Image Styling */
-        .project-image-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            position: relative;
-            background: #f8fafc;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-image-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        <!-- Removed duplicate Projects section (kept the main Projects block later in the document) -->
 
         .project-image {
             width: 100%;
@@ -557,11 +439,11 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#honors">Honors</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -576,6 +458,19 @@
                 <p class="subtitle">Data & Business Analyst | AI/ ML | MS in Information Systems</p>
                 <p class="achievements">🏆 Runner-Up – CSUF Datathon</p>
                 <a href="#projects" class="cta-button">View My Work</a>
+                <a href="https://drive.google.com/uc?export=download&id=1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW" class="cta-button resume-download" target="_blank" rel="noopener noreferrer">Download My Resume</a>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="resume">
+            <h2>Resume</h2>
+            <div class="resume-content">
+                <p>View or download my resume (PDF):</p>
+                <a href="https://drive.google.com/uc?export=download&id=1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW" target="_blank" rel="noopener noreferrer" class="cert-link">Download Resume (PDF)</a>
+                <div class="resume-preview" style="margin-top:1rem;">
+                    <iframe src="https://drive.google.com/file/d/1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW/preview" width="100%" height="480" style="border:1px solid #e2e8f0; border-radius:8px;"></iframe>
+                </div>
             </div>
         </section>
 
@@ -593,118 +488,306 @@
                         <li>Simulating cloud ERP migrations and digital transformation strategies</li>
                         <li>Assessing cybersecurity risks and supply chain resilience</li>
                     </ul>
+                </div>
+            </div>
+        </section>
 
-                    <div class="skills">
-                        <h3>Technical Skills</h3>
-                        
-                        <div class="skills-category">
-                            <h4>Data Science & Analytics</h4>
-                            <div class="skill-tags">
-                                <span>Python</span>
-                                <span>R</span>
-                                <span>Machine Learning</span>
-                                <span>Deep Learning</span>
-                                <span>CNN</span>
-                                <span>RNN</span>
-                                <span>Random Forest</span>
-                                <span>Data Mining</span>
-                                <span>Statistical Analysis</span>
-                                <span>Predictive Analytics</span>
-                                <span>Multivariate Analysis</span>
-                                <span>NLP</span>
-                                <span>Time Series Analysis</span>
-                                <span>Computer Vison</span>
+        <!-- Projects Section (moved to directly after About) -->
+        <section id="projects" class="projects">
+            <h2>Featured Projects</h2>
+
+            <div class="project-category">
+                <h3>Enterprise Solutions & Project Management</h3>
+                <div class="project-grid">
+                    <div class="project-card featured">
+                        <div class="project-image-container placeholder" data-project="Exide DTSC Clean-Up Project">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
                             </div>
                         </div>
-
-                        <div class="skills-category">
-                            <h4>Data Tools & Visualization</h4>
-                            <div class="skill-tags">
-                                <span>Power BI</span>
-                                <span>Tableau</span>
-                                <span>Alteryx</span>
-                                <span>pandas</span>
-                                <span>scikit-learn</span>
-                                <span>Matplotlib</span>
-                                <span>Seaborn</span>
-                                <span>Prophet</span>
-                                <span>DuckDB</span>
-                                <span>IBM SPSS</span>
+                        <div class="project-info">
+                            <h4>Exide DTSC Clean-Up Project Management Application</h4>
+                            <p class="project-date">Aug 2024 - Dec 2024</p>
+                            <p class="project-description">Led the development of a mission-critical web application for the Department of Toxic Substances Control (DTSC) to track and manage contamination cleanup operations in California.</p>
+                            <ul class="project-features">
+                                <li>Orchestrated 5+ successful sprints achieving 95% stakeholder satisfaction rate</li>
+                                <li>Implemented Agile methodologies including daily standups, sprint planning, and retrospectives</li>
+                                <li>Managed backlog prioritization and user story refinement with stakeholders</li>
+                                <li>Coordinated cross-functional teams including developers, QA, and environmental experts</li>
+                                <li>Established KPIs and metrics tracking for project success measurement</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Agile</span>
+                                <span>Scrum</span>
+                                <span>JIRA</span>
+                                <span>User Stories</span>
+                                <span>Sprint Planning</span>
+                                <span>Stakeholder Management</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="skills-category">
-                            <h4>Cloud & Databases</h4>
-                            <div class="skill-tags">
-                                <span>AWS</span>
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="Sports Arena Management System">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Sports Arena Management System</h4>
+                            <p class="project-date">Jan 2024 - Apr 2024</p>
+                            <p class="project-description">Architected and implemented an enterprise-grade database management system to streamline sports arena operations, handling complex scheduling, payments, and event management workflows.</p>
+                            <ul class="project-features">
+                                <li>Designed comprehensive ER diagrams using Draw.io for clear system architecture visualization</li>
+                                <li>Developed normalized database schema with optimized indexes and constraints</li>
+                                <li>Implemented transaction management for concurrent booking operations</li>
+                                <li>Created stored procedures and triggers for automated business rules</li>
+                                <li>Built reporting system for revenue tracking and occupancy analytics</li>
+                            </ul>
+                            <div class="tech-stack">
                                 <span>SQL</span>
-                                <span>MongoDB</span>
-                                <span>Oracle Database</span>
                                 <span>DBMS</span>
                                 <span>ER Modeling</span>
+                                <span>Draw.io</span>
+                                <span>Stored Procedures</span>
                                 <span>Transaction Management</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="skills-category">
-                            <h4>Web Development</h4>
-                            <div class="skill-tags">
-                                <span>Django</span>
-                                <span>Selenium</span>
-                                <span>Web Scraping</span>
-                                <span>Automation</span>
-                                <span>SMTP</span>
+            <div class="project-category">
+                <h3>Business Intelligence & Analytics</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                       <img src="assets/spotify-analysis-dashboard.png" 
+                           alt="Spotify Analysis Dashboard" 
+                           class="project-image" loading="lazy">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
                             </div>
                         </div>
-                        
-
-                        <div class="skills-category">
-                            <h4>Data Engineering</h4>
-                            <div class="skill-tags">
-                                <span>Kafka</span>
-                                <span>Pyspark</span>
-                                
-                            </div>
-                        </div>
-
-                        <div class="skills-category">
-                            <h4>Business & Management</h4>
-                            <div class="skill-tags">
-                                <span>Business Analytics</span>
+                        <div class="project-info">
+                            <h4>Spotify Data Analysis</h4>
+                            <p class="project-date">May 2024 - Aug 2024</p>
+                            <p class="project-description">Comprehensive analysis of Spotify streaming patterns and music trends using Power BI, analyzing over 489.46bn streams across 952 tracks.</p>
+                            <ul class="project-features">
+                                <li>Analyzed 489.46bn total streams across 952 tracks</li>
+                                <li>Created interactive dashboards for track performance metrics</li>
+                                <li>Developed artist popularity analysis with top performers</li>
+                                <li>Built music attribute analysis system (Energy, Danceability, Speech)</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Power BI</span>
+                                <span>Data Analytics</span>
                                 <span>Business Intelligence</span>
-                                <span>Project Management</span>
-                                <span>Agile Methodologies</span>
-                                <span>Supply Chain Management</span>
-                                <span>Operations Management</span>
-                                <span>Business Analysis</span>
-                                <span>Requirements Management</span>
+                                <span>Data Visualization</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://app.powerbi.com/groups/me/reports/364ac5f7-f330-4302-b1ce-95755a448a3c/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                    <i class="fas fa-chart-bar"></i> Power BI Dashboard
+                                </a>
+                                <a href="https://drive.google.com/file/d/1FiVRk6M69DaoHs8JLOyBxXeejcM1N6VU/view" target="_blank" class="project-link">
+                                    <i class="fab fa-google-drive"></i> Documentation
+                                </a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="skills-category">
-                            <h4>Engineering & Design</h4>
-                            <div class="skill-tags">
-                                <span>SOLIDWORKS</span>
-                                <span>AutoCAD</span>
-                                <span>Industrial Design</span>
-                                <span>Machine Design</span>
-                                <span>CFD</span>
-                                <span>FEA</span>
-                                <span>Rapid Prototyping</span>
+                    <div class="project-card">
+                        <div class="project-image-container">
+                       <img src="assets/nike-sales-dashboard.png" 
+                           alt="Nike Sales Dashboard" 
+                           class="project-image" loading="lazy">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
                             </div>
                         </div>
-
-                        <div class="skills-category">
-                            <h4>Soft Skills</h4>
-                            <div class="skill-tags">
-                                <span>Leadership</span>
-                                <span>Communication</span>
-                                <span>Critical Thinking</span>
-                                <span>Problem Solving</span>
-                                <span>Teamwork</span>
-                                <span>Public Speaking</span>
-                                <span>Negotiation</span>
+                        <div class="project-info">
+                            <h4>Nike USA Sales Analysis</h4>
+                            <p class="project-date">Jan 2024 - May 2024</p>
+                            <p class="project-description">Developed comprehensive Power BI dashboards analyzing Nike's USA sales performance, providing actionable insights for business strategy.</p>
+                            <ul class="project-features">
+                                <li>Created multi-dimensional analysis of sales trends</li>
+                                <li>Implemented advanced DAX measures for KPI tracking</li>
+                                <li>Built regional performance comparison tools</li>
+                                <li>Designed executive-level reporting dashboards</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Power BI</span>
+                                <span>DAX</span>
+                                <span>Data Modeling</span>
+                                <span>Analytics</span>
                             </div>
+                            <div class="project-links">
+                                <a href="https://app.powerbi.com/groups/me/reports/b0ff556e-7666-4dbb-8093-9c5e56a731b6/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                    <i class="fas fa-chart-bar"></i> Power BI Dashboard
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ELvBN9ASRtqZV5IR_PmY7iUUQZcwv37X/view" target="_blank" class="project-link">
+                                    <i class="fab fa-google-drive"></i> Documentation
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container">
+                       <img src="assets/chocolate-sales-dashboard.png" 
+                           alt="Chocolate Sales Dashboard" 
+                           class="project-image" loading="lazy">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Chocolate Sales Analysis – Tableau</h4>
+                            <p class="project-date">Mar 2025 - Apr 2025</p>
+                            <p class="project-description">Created an interactive Tableau dashboard analyzing global chocolate sales performance with detailed metrics and geographical insights.</p>
+                            <ul class="project-features">
+                                <li>Implemented monthly sales tracking with peak analysis</li>
+                                <li>Developed geographic distribution visualizations</li>
+                                <li>Created product performance ranking system</li>
+                                <li>Built multi-dimensional filtering capabilities</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Tableau</span>
+                                <span>Data Visualization</span>
+                                <span>Analytics</span>
+                                <span>Dashboard Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3>Data Science & Statistical Analysis</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="YouTube Analytics Dashboard">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>YouTube Channels Performance Analysis</h4>
+                            <p class="project-date">Aug 2023 - Dec 2023</p>
+                            <p class="project-description">Conducted in-depth statistical analysis of YouTube channel performance metrics to identify key revenue drivers and success factors.</p>
+                            <ul class="project-features">
+                                <li>Performed extensive data cleaning and preprocessing</li>
+                                <li>Conducted multivariate statistical analysis using SPSS</li>
+                                <li>Developed predictive models for channel performance</li>
+                                <li>Created comprehensive visualization suite for findings</li>
+                                <li>Identified statistically significant success factors</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>IBM SPSS</span>
+                                <span>Statistical Analysis</span>
+                                <span>Data Cleaning</span>
+                                <span>Predictive Modeling</span>
+                                <span>Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="AI Logistics Optimization">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>AI Logistics Optimization Agent</h4>
+                            <p class="project-date">Apr 2025 - May 2025</p>
+                            <p class="project-description">Built an intelligent decision-support system using Python and machine learning to optimize delivery logistics based on multiple parameters including distance, weight, urgency, and cost constraints.</p>
+                            <ul class="project-features">
+                                <li>Achieved 85% accuracy in delivery mode recommendations</li>
+                                <li>Implemented ML-powered optimization with rule-based validation</li>
+                                <li>Developed real-time cost and ETA prediction system</li>
+                                <li>Created interactive Streamlit dashboard with filtering capabilities</li>
+                                <li>Built automated data pipeline for continuous model improvement</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>scikit-learn</span>
+                                <span>Streamlit</span>
+                                <span>pandas</span>
+                                <span>Matplotlib</span>
+                                <span>Seaborn</span>
+                                <span>NumPy</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3>Research & Case Studies</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="WEDM Optimization Study">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>WEDM Parameter Optimization Study</h4>
+                            <p class="project-date">Dec 2017 - Jun 2018</p>
+                            <p class="project-description">Applied Taguchi's DOE and Grey Relational Analysis for WEDM optimization.</p>
+                            <ul class="project-features">
+                                <li>Multivariate statistical analysis</li>
+                                <li>Parameter optimization</li>
+                                <li>Quality control improvements</li>
+                                <li>Predictive insights development</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Statistical Analysis</span>
+                                <span>DOE</span>
+                                <span>Multivariate Analysis</span>
+                                <span>Predictive Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="Big Data Analytics Research">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Big Data Analytics: Value & Limitations</h4>
+                            <p class="project-description">Research on big data applications in business.</p>
+                            <ul class="project-features">
+                                <li>Case studies of Amazon and Spotify</li>
+                                <li>Data quality assessment</li>
+                                <li>Ethical considerations</li>
+                                <li>Business value optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container placeholder" data-project="COVID-19 Supply Chain Analysis">
+                            <div class="project-image-overlay">
+                                <span>Click to view full project</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>COVID-19 Supply Chain Study</h4>
+                            <p class="project-description">Analysis of digital transformation in supply chains.</p>
+                            <ul class="project-features">
+                                <li>IoT and AI applications</li>
+                                <li>Risk diversification strategies</li>
+                                <li>Cloud-based logistics solutions</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1348,10 +1431,12 @@
                 <h3>Business Intelligence & Analytics</h3>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-image-container">
+                        <div class="project-image-container has-image" role="button" tabindex="0" aria-label="Open project image: Spotify Analysis Dashboard">
                             <img src="assets/spotify-analysis-dashboard.png" 
+                                 srcset="assets/spotify-analysis-dashboard.png 1x"
+                                 sizes="(max-width: 768px) 100vw, 600px"
                                  alt="Spotify Analysis Dashboard" 
-                                 class="project-image">
+                                 class="project-image" loading="lazy">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1384,10 +1469,12 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
+                        <div class="project-image-container has-image" role="button" tabindex="0" aria-label="Open project image: Nike Sales Dashboard">
                             <img src="assets/nike-sales-dashboard.png" 
+                                 srcset="assets/nike-sales-dashboard.png 1x"
+                                 sizes="(max-width: 768px) 100vw, 600px"
                                  alt="Nike Sales Dashboard" 
-                                 class="project-image">
+                                 class="project-image" loading="lazy">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1420,10 +1507,12 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container">
+                        <div class="project-image-container has-image" role="button" tabindex="0" aria-label="Open project image: Chocolate Sales Dashboard">
                             <img src="assets/chocolate-sales-dashboard.png" 
+                                 srcset="assets/chocolate-sales-dashboard.png 1x"
+                                 sizes="(max-width: 768px) 100vw, 600px"
                                  alt="Chocolate Sales Dashboard" 
-                                 class="project-image">
+                                 class="project-image" loading="lazy">
                             <div class="project-image-overlay">
                                 <span>Click to view full project</span>
                             </div>
@@ -1581,10 +1670,125 @@
             </div>
         </section>
 
+        <!-- Skills Section (moved out of About) -->
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h4>Data Science & Analytics</h4>
+                    <div class="skill-tags">
+                        <span>Python</span>
+                        <span>R</span>
+                        <span>Machine Learning</span>
+                        <span>Deep Learning</span>
+                        <span>CNN</span>
+                        <span>RNN</span>
+                        <span>Random Forest</span>
+                        <span>Data Mining</span>
+                        <span>Statistical Analysis</span>
+                        <span>Predictive Analytics</span>
+                        <span>Multivariate Analysis</span>
+                        <span>NLP</span>
+                        <span>Time Series Analysis</span>
+                        <span>Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Data Tools & Visualization</h4>
+                    <div class="skill-tags">
+                        <span>Power BI</span>
+                        <span>Tableau</span>
+                        <span>Alteryx</span>
+                        <span>pandas</span>
+                        <span>scikit-learn</span>
+                        <span>Matplotlib</span>
+                        <span>Seaborn</span>
+                        <span>Prophet</span>
+                        <span>DuckDB</span>
+                        <span>IBM SPSS</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Cloud & Databases</h4>
+                    <div class="skill-tags">
+                        <span>AWS</span>
+                        <span>SQL</span>
+                        <span>MongoDB</span>
+                        <span>Oracle Database</span>
+                        <span>DBMS</span>
+                        <span>ER Modeling</span>
+                        <span>Transaction Management</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Web Development</h4>
+                    <div class="skill-tags">
+                        <span>Django</span>
+                        <span>Selenium</span>
+                        <span>Web Scraping</span>
+                        <span>Automation</span>
+                        <span>SMTP</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Data Engineering</h4>
+                    <div class="skill-tags">
+                        <span>Kafka</span>
+                        <span>Pyspark</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Business & Management</h4>
+                    <div class="skill-tags">
+                        <span>Business Analytics</span>
+                        <span>Business Intelligence</span>
+                        <span>Project Management</span>
+                        <span>Agile Methodologies</span>
+                        <span>Supply Chain Management</span>
+                        <span>Operations Management</span>
+                        <span>Business Analysis</span>
+                        <span>Requirements Management</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Engineering & Design</h4>
+                    <div class="skill-tags">
+                        <span>SOLIDWORKS</span>
+                        <span>AutoCAD</span>
+                        <span>Industrial Design</span>
+                        <span>Machine Design</span>
+                        <span>CFD</span>
+                        <span>FEA</span>
+                        <span>Rapid Prototyping</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Soft Skills</h4>
+                    <div class="skill-tags">
+                        <span>Leadership</span>
+                        <span>Communication</span>
+                        <span>Critical Thinking</span>
+                        <span>Problem Solving</span>
+                        <span>Teamwork</span>
+                        <span>Public Speaking</span>
+                        <span>Negotiation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Get In Touch</h2>
             <div class="contact-content">
+                <p class="contact-note">Fill the form if you want me to contact you.</p>
                 <div class="contact-info">
                     <a href="mailto:krishnavyasd@gmail.com" class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -1602,6 +1806,10 @@
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
                     </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGoL5jpeVjq6iajWzKJT8lwJmDEsDVIHS2oNE32DQ9z8i6bw/viewform?usp=header" class="contact-item" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Contact / Request (Google Form)</span>
+                    </a>
                 </div>
             </div>
             <style>
@@ -1612,6 +1820,12 @@
                     max-width: 600px;
                     margin: 0 auto;
                     padding: 20px;
+                }
+                .contact-note {
+                    text-align: center;
+                    color: #1e293b;
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
                 }
                 
                 .contact-item {
@@ -1760,10 +1974,22 @@
             });
 
             document.querySelectorAll('.project-image-container').forEach(container => {
+                // click to open modal (only when an <img> exists)
                 container.addEventListener('click', () => {
-                    const imgSrc = container.querySelector('img').src;
-                    modalImage.src = imgSrc;
-                    modal.classList.add('active');
+                    const img = container.querySelector('img');
+                    if (img && img.src) {
+                        modalImage.src = img.src;
+                        modalImage.alt = img.alt || 'Project image';
+                        modal.classList.add('active');
+                    }
+                });
+
+                // keyboard activation (Enter / Space)
+                container.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        container.click();
+                    }
                 });
             });
         });

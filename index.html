@@ -1,252 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-        <!-- Removed duplicate Projects section (kept the main Projects block later in the document) -->
-    <style>
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            border-radius: 8px;
-        }
-        
-        /* Accessibility Improvements */
-        :focus {
-            outline: 3px solid #2563eb;
-            outline-offset: 2px;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #2563eb;
-            color: white;
-            padding: 8px;
-            z-index: 100;
-            transition: top 0.3s;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ... existing styles ... */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 3rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .project-image-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            position: relative;
-            background: #f8fafc;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #f8fafc;
-            padding: 1rem;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-image.error {
-            display: none;
-        }
-
-        .project-image-container.placeholder {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .project-image-container.placeholder::before {
-            content: attr(data-project);
-            position: absolute;
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #475569;
-            text-align: center;
-            max-width: 80%;
-            line-height: 1.4;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, calc(-50% + 1.5rem));
-            z-index: 1;
-        }
-
-        .project-image-container.placeholder::after {
-            content: "🖼️";
-            position: absolute;
-            font-size: 2.5rem;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, calc(-50% - 1.5rem));
-            opacity: 0.7;
-            z-index: 1;
-        }
-
-        .project-image-container.has-image::before,
-        .project-image-container.has-image::after {
-            display: none;
-        }
-
-        .project-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-image-overlay span {
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .project-image-container:hover .project-image-overlay {
-            opacity: 1;
-        }
-
-        .project-info {
-            padding: 2rem;
-        }
-
-        .project-info h4 {
-            color: #1a202c;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .project-date {
-            color: #64748b;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .project-description {
-            color: #4a5568;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features {
-            list-style-type: none;
-            padding: 0;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .project-features li {
-            color: #4a5568;
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .project-features li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #4299e1;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: #4299e1;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background-color: #3182ce;
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .project-grid {
-                padding: 0 1rem;
-            }
-            
-            .project-info h4 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* ... existing styles ... */
-        .cert-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-            background-color: #2563eb;
-            color: #ffffff !important;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-        }
-        
-        .cert-link:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-            color: #ffffff !important;
-        }
-
-        .cert-link i {
-            margin-right: 0.5rem;
-            font-size: 1.1rem;
-            color: #ffffff;
-        }
-
-        .cert-link::before {
-            content: "🔗";
-            margin-right: 0.5rem;
-            font-size: 1.1rem;
+    <!-- Styles are consolidated in styles.css -->
             color: #ffffff;
         }
     </style>
@@ -276,100 +28,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main id="main">
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Hi, I'm <span class="highlight">Krishnavyas Desugari</span></h1>
-                <p class="subtitle">Data & Business Analyst | AI/ ML | MS in Information Systems</p>
-                <p class="achievements">🏆 Runner-Up – CSUF Datathon</p>
-                <a href="#projects" class="cta-button">View My Work</a>
-                <a href="https://drive.google.com/uc?export=download&id=1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW" class="cta-button resume-download" target="_blank" rel="noopener noreferrer">Download My Resume</a>
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume" class="resume">
-            <h2>Resume</h2>
-            <div class="resume-content">
-                <p>View or download my resume (PDF):</p>
-                <a href="https://drive.google.com/uc?export=download&id=1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW" target="_blank" rel="noopener noreferrer" class="cert-link">Download Resume (PDF)</a>
-                <div class="resume-preview" style="margin-top:1rem;">
-                    <iframe src="https://drive.google.com/file/d/1l4RXH9IL4yTzilJS9lyctrdL7I6mz6WW/preview" width="100%" height="480" style="border:1px solid #e2e8f0; border-radius:8px;"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a motivated Data Analytics and Cloud Business Analyst passionate about transforming data into actionable business insights. Currently pursuing my Master's in Information Systems at California State University, Long Beach (CSULB), I combine technical expertise with business strategy to solve complex problems.</p>
-                    
-                    <p>Through hands-on academic projects and case studies, I have worked on:</p>
-                    <ul class="experience-list">
-                        <li>Building interactive data visualizations for decision support</li>
-                        <li>Analyzing big data and ethical AI governance challenges</li>
-                        <li>Simulating cloud ERP migrations and digital transformation strategies</li>
-                        <li>Assessing cybersecurity risks and supply chain resilience</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section (moved to directly after About) -->
-        <section id="projects" class="projects">
-            <h2>Featured Projects</h2>
-
-            <div class="project-category">
-                <h3>Enterprise Solutions & Project Management</h3>
-                <div class="project-grid">
-                    <div class="project-card featured">
-                        <div class="project-image-container placeholder" data-project="Exide DTSC Clean-Up Project">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Exide DTSC Clean-Up Project Management Application</h4>
-                            <p class="project-date">Aug 2024 - Dec 2024</p>
-                            <p class="project-description">Led the development of a mission-critical web application for the Department of Toxic Substances Control (DTSC) to track and manage contamination cleanup operations in California.</p>
-                            <ul class="project-features">
-                                <li>Orchestrated 5+ successful sprints achieving 95% stakeholder satisfaction rate</li>
-                                <li>Implemented Agile methodologies including daily standups, sprint planning, and retrospectives</li>
-                                <li>Managed backlog prioritization and user story refinement with stakeholders</li>
-                                <li>Coordinated cross-functional teams including developers, QA, and environmental experts</li>
-                                <li>Established KPIs and metrics tracking for project success measurement</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>Agile</span>
-                                <span>Scrum</span>
-                                <span>JIRA</span>
-                                <span>User Stories</span>
-                                <span>Sprint Planning</span>
-                                <span>Stakeholder Management</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="Sports Arena Management System">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h4>Sports Arena Management System</h4>
-                            <p class="project-date">Jan 2024 - Apr 2024</p>
-                            <p class="project-description">Architected and implemented an enterprise-grade database management system to streamline sports arena operations, handling complex scheduling, payments, and event management workflows.</p>
-                            <ul class="project-features">
-                                <li>Designed comprehensive ER diagrams using Draw.io for clear system architecture visualization</li>
+            <!-- Certification styles consolidated in styles.css -->
                                 <li>Developed normalized database schema with optimized indexes and constraints</li>
                                 <li>Implemented transaction management for concurrent booking operations</li>
                                 <li>Created stored procedures and triggers for automated business rules</li>
@@ -417,10 +76,10 @@
                                 <span>Data Visualization</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://app.powerbi.com/groups/me/reports/364ac5f7-f330-4302-b1ce-95755a448a3c/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                <a href="https://app.powerbi.com/groups/me/reports/364ac5f7-f330-4302-b1ce-95755a448a3c/ReportSection?experience=power-bi" target="_blank" rel="noopener noreferrer" class="project-link">
                                     <i class="fas fa-chart-bar"></i> Power BI Dashboard
                                 </a>
-                                <a href="https://drive.google.com/file/d/1FiVRk6M69DaoHs8JLOyBxXeejcM1N6VU/view" target="_blank" class="project-link">
+                                <a href="https://drive.google.com/file/d/1FiVRk6M69DaoHs8JLOyBxXeejcM1N6VU/view" target="_blank" rel="noopener noreferrer" class="project-link">
                                     <i class="fab fa-google-drive"></i> Documentation
                                 </a>
                             </div>
@@ -453,10 +112,10 @@
                                 <span>Analytics</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://app.powerbi.com/groups/me/reports/b0ff556e-7666-4dbb-8093-9c5e56a731b6/ReportSection?experience=power-bi" target="_blank" class="project-link">
+                                <a href="https://app.powerbi.com/groups/me/reports/b0ff556e-7666-4dbb-8093-9c5e56a731b6/ReportSection?experience=power-bi" target="_blank" rel="noopener noreferrer" class="project-link">
                                     <i class="fas fa-chart-bar"></i> Power BI Dashboard
                                 </a>
-                                <a href="https://drive.google.com/file/d/1ELvBN9ASRtqZV5IR_PmY7iUUQZcwv37X/view" target="_blank" class="project-link">
+                                <a href="https://drive.google.com/file/d/1ELvBN9ASRtqZV5IR_PmY7iUUQZcwv37X/view" target="_blank" rel="noopener noreferrer" class="project-link">
                                     <i class="fab fa-google-drive"></i> Documentation
                                 </a>
                             </div>
@@ -497,10 +156,8 @@
                 <h3>Data Science & Statistical Analysis</h3>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="YouTube Analytics Dashboard">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">📁</div>
                         </div>
                         <div class="project-info">
                             <h4>YouTube Channels Performance Analysis</h4>
@@ -524,10 +181,8 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="AI Logistics Optimization">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">📊</div>
                         </div>
                         <div class="project-info">
                             <h4>AI Logistics Optimization Agent</h4>
@@ -550,7 +205,7 @@
                                 <span>NumPy</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" class="project-link">
+                                <a href="https://github.com/krishnavyas36/full_workflow_n8n" target="_blank" rel="noopener noreferrer" class="project-link">
                                     <i class="fab fa-github"></i> View Code
                                 </a>
                             </div>
@@ -563,10 +218,8 @@
                 <h3>Research & Case Studies</h3>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="WEDM Optimization Study">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🤖</div>
                         </div>
                         <div class="project-info">
                             <h4>WEDM Parameter Optimization Study</h4>
@@ -588,10 +241,8 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="Big Data Analytics Research">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🔬</div>
                         </div>
                         <div class="project-info">
                             <h4>Big Data Analytics: Value & Limitations</h4>
@@ -606,10 +257,8 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-image-container placeholder" data-project="COVID-19 Supply Chain Analysis">
-                            <div class="project-image-overlay">
-                                <span>Click to view full project</span>
-                            </div>
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">📚</div>
                         </div>
                         <div class="project-info">
                             <h4>COVID-19 Supply Chain Study</h4>
@@ -623,6 +272,249 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Additional Projects added from user's project list -->
+            <div class="project-category">
+                <h3>Automation & Tooling</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🧾</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Daily Job Tracker</h4>
+                            <p class="project-date">Jun 2025 – Jul 2025</p>
+                            <p class="project-description">Automated daily scraper that collects remote job listings (Data Analyst, BI, Data Scientist) from RemoteOK and USAJobs.gov and pushes structured listings into a Google Sheet via GitHub Actions.</p>
+                            <ul class="project-features">
+                                <li>Scheduled GitHub Actions workflow running daily at 5 PM PST</li>
+                                <li>Filters jobs by relevance and preserves structured metadata</li>
+                                <li>Targets remote-friendly roles and maintains an accessible tracker for applications</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Requests</span>
+                                <span>BeautifulSoup</span>
+                                <span>Google Sheets API</span>
+                                <span>GitHub Actions</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/daily-job-tracker" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🤖</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Automated Data Entry & Form Submission Tool</h4>
+                            <p class="project-date">Feb 2025</p>
+                            <p class="project-description">Python automation using Selenium and Requests to scrape visa-sponsoring company career pages and auto-fill application forms, cutting manual effort by ~90%.</p>
+                            <ul class="project-features">
+                                <li>Career-page scraping using SERPAPI & BeautifulSoup</li>
+                                <li>Automated form filling with Selenium WebDriver</li>
+                                <li>Excel processing with pandas & OpenPyXL for dynamic company lookups</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Selenium</span>
+                                <span>pandas</span>
+                                <span>OpenPyXL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">💰</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Budget & Expenses Tracker App</h4>
+                            <p class="project-date">Jan 2024 – Mar 2024</p>
+                            <p class="project-description">A CRUD-enabled budgeting app using Python and pandas to integrate with Excel for data storage and analysis.</p>
+                            <ul class="project-features">
+                                <li>CRUD operations for budgets and expense entries</li>
+                                <li>Excel integration for persistence and analysis</li>
+                                <li>Reporting views for monthly spending trends</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>pandas</span>
+                                <span>Excel</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Budget-Tracker-and-Analysis" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3>Supply Chain & Operations</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🧭</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>TrustChain — AI & Blockchain Supply Chain Verification</h4>
+                            <p class="project-date">Jan 2025 – May 2025</p>
+                            <p class="project-description">Enterprise SaaS prototype combining AI, blockchain, and IoT for product verification and supplier compliance in ethical fashion supply chains.</p>
+                            <ul class="project-features">
+                                <li>Designed dashboard UI in Figma and simulated compliance data</li>
+                                <li>Built Tableau dashboards to visualize provenance and verification metrics</li>
+                                <li>Validated monetization scenarios: tiered SaaS and API licensing</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Figma</span>
+                                <span>Tableau</span>
+                                <span>AI</span>
+                                <span>Blockchain (concept)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🚚</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>AI Logistics Optimization Agent</h4>
+                            <p class="project-date">Apr 2025 – May 2025</p>
+                            <p class="project-description">Interactive ML-powered recommender for optimal delivery mode (LTL, TL, Drayage, Transload) with cost/ETA estimation and confidence scoring.</p>
+                            <ul class="project-features">
+                                <li>Streamlit UI with filtering, visualization and retraining options</li>
+                                <li>Combined ML models and rule-based logic for safe recommendations</li>
+                                <li>Decision logs for continuous learning and performance monitoring</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>scikit-learn</span>
+                                <span>pandas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/AI_agent" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3>Machine Learning & Research</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🧠</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Facial Expression Recognition — Emotion Analysis</h4>
+                            <p class="project-date">Aug 2024 – Dec 2024</p>
+                            <p class="project-description">Classified FER2013 images into seven emotions; used data augmentation and hyperparameter tuning to improve accuracy.</p>
+                            <ul class="project-features">
+                                <li>Trained CNN models on 35,000+ images</li>
+                                <li>Improved performance by ~20% with augmentation</li>
+                                <li>Explored applications in healthcare and customer service</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>TensorFlow</span>
+                                <span>CNN</span>
+                                <span>Data Augmentation</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Facial_expression_rcognition" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🔬</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Real-Time News Popularity Forecasting</h4>
+                            <p class="project-date">Aug 2024 – Dec 2024</p>
+                            <p class="project-description">Forecasted article popularity using historical Mashable data and engineered features to achieve ~73% accuracy.</p>
+                            <ul class="project-features">
+                                <li>Feature engineering for timing and keywords</li>
+                                <li>Ensembled models including Random Forests and Deep Learning</li>
+                                <li>Produced actionable recommendations for content strategy</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Random Forest</span>
+                                <span>Feature Engineering</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Deep_learning_structured" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3>UX & Domain Projects</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🚕</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Taxi Booking Wireframe Application</h4>
+                            <p class="project-date">Jan 2025</p>
+                            <p class="project-description">Wireframe prototype for a taxi booking app emphasizing fare estimation, real-time tracking, and driver ratings; designed in Figma/JustMind.</p>
+                            <ul class="project-features">
+                                <li>Interactive prototypes with usability focus</li>
+                                <li>User research and competitor analysis</li>
+                                <li>Iterative design refinements based on feedback</li>
+                            </ul>
++                        
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">🛠️</div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Exide DTSC Clean-Up — Project Management App</h4>
+                            <p class="project-date">Aug 2024 – Dec 2024</p>
+                            <p class="project-description">Acted as Product Owner for a cleanup-tracking web app; led 5+ sprints and delivered with high stakeholder satisfaction.</p>
+                            <ul class="project-features">
+                                <li>Sprint planning and stakeholder coordination</li>
+                                <li>Delivered reporting and tracking dashboards</li>
+                                <li>Achieved 95% on-time delivery per stakeholder acceptance</li>
+                            </ul>
++                        
+                    </div>
++
+                    <div class="project-card">
+                        <div class="project-thumb" aria-hidden="true">
+                            <div class="project-thumb-inner">📇</div>
++                        </div>
++
+                        <div class="project-info">
+                            <h4>Contacts App</h4>
+                            <p class="project-date">Aug 2023 – Oct 2023</p>
+                            <p class="project-description">A CRUD-based contacts management application built with Django to efficiently create, read, update, and delete contacts.</p>
+                            <ul class="project-features">
+                                <li>User-friendly interface for contact operations</li>
+                                <li>Backend implemented in Django with RESTful patterns</li>
+                                <li>Search and filtering capabilities</li>
++                            </ul>
++                            <div class="project-links">
++                                <a href="https://github.com/krishnavyas36/Krishna_vyas" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
++                            </div>
++                        </div>
++                    </div>
++                </div>
++            </div>
++
+         </section>
+*** End Patch
         </section>
 
         <!-- Honors & Awards Section -->
@@ -832,7 +724,7 @@
                             <li>Developed user stories for innovative applications</li>
                             <li>Diagnosed and solved sprint development issues</li>
                         </ul>
-                        <a href="https://www.theforage.com/simulations/cognizant/agile-methodology-io6p" class="simulation-link" target="_blank">View Certificate</a>
+                        <a href="https://www.theforage.com/simulations/cognizant/agile-methodology-io6p" class="simulation-link" target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </div>
                 </div>
 
@@ -845,7 +737,7 @@
                             <li>Developed data-driven client recommendations</li>
                             <li>Applied active listening and social proof techniques</li>
                         </ul>
-                        <a href="https://www.theforage.com/simulations/red-bull/on-premise-sales-waza" class="simulation-link" target="_blank">View Certificate</a>
+                        <a href="https://www.theforage.com/simulations/red-bull/on-premise-sales-waza" class="simulation-link" target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </div>
                 </div>
 
@@ -858,7 +750,7 @@
                             <li>Created strategic recommendations</li>
                             <li>Developed presentation materials for stakeholders</li>
                         </ul>
-                        <a href="https://www.theforage.com/simulations/accenture-nam/data-analytics-mmlb" class="simulation-link" target="_blank">View Certificate</a>
+                        <a href="https://www.theforage.com/simulations/accenture-nam/data-analytics-mmlb" class="simulation-link" target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </div>
                 </div>
             </div>
@@ -876,7 +768,7 @@
                             <p class="issuer">Google</p>
                             <p class="date">Issued Feb 2025</p>
                             <p class="credential">Credential ID: VJDTCP7JBSTF</p>
-                            <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://coursera.org/share/VJDTCP7JBSTF" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                             <div class="cert-modules">
                                 <span>Foundations: Data, Data, Everywhere</span>
                                 <span>Ask Questions to Make Data-Driven Decisions</span>
@@ -892,14 +784,14 @@
                             <p class="issuer">Google</p>
                             <p class="date">Issued Apr 2025</p>
                             <p class="credential">Credential ID: TPRZ893ZBLW0</p>
-                            <a href="https://coursera.org/share/TPRZ893ZBLW0" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://coursera.org/share/TPRZ893ZBLW0" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                         <div class="cert-item">
                             <h4>Google AI Essentials</h4>
                             <p class="issuer">Google</p>
                             <p class="date">Issued Apr 2025</p>
                             <p class="credential">Credential ID: LNZQ8DSKHO7D</p>
-                            <a href="https://coursera.org/share/LNZQ8DSKHO7D" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://coursera.org/share/LNZQ8DSKHO7D" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
@@ -969,7 +861,7 @@
                             <p class="issuer">Macquarie University</p>
                             <p class="date">Issued Oct 2021</p>
                             <p class="credential">Credential ID: 4WMG27NAXBFK</p>
-                            <a href="https://coursera.org/share/390476a38d9387ca66bd6a95716291d8" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://coursera.org/share/390476a38d9387ca66bd6a95716291d8" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
@@ -1016,7 +908,7 @@
                             <p class="issuer">University of California, Irvine</p>
                             <p class="date">Issued Jul 2020</p>
                             <p class="credential">Credential ID: 4ZZXCCD97CZG</p>
-                            <a href="https://coursera.org/share/4ZZXCCD97CZG" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://coursera.org/share/4ZZXCCD97CZG" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
@@ -1029,144 +921,27 @@
                             <p class="issuer">Forage</p>
                             <p class="date">Issued Jan 2024</p>
                             <p class="credential">Credential ID: ee7SWhWczPLbpm6sr</p>
-                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_ee7SWhWczPLbpm6sr_1706252533734_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_ee7SWhWczPLbpm6sr_1706252533733734_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                         <div class="cert-item">
                             <h4>Cognizant - Agile Methodology Job Simulation</h4>
                             <p class="issuer">Forage</p>
                             <p class="date">Issued Nov 2023</p>
                             <p class="credential">Credential ID: NJjrSCv6enSowTbMd</p>
-                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Cognizant/ZZswQqhKWGQp6XiP6_Cognizant_NJjrSCv6enSowTbMd_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Cognizant/ZZswQqhKWGQp6XiP6_Cognizant_NJjrSCv6enSowTbMd_1699424857787_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                         <div class="cert-item">
                             <h4>Red Bull - On-Premise Sales Job Simulation</h4>
                             <p class="issuer">Forage</p>
                             <p class="date">Issued Nov 2023</p>
                             <p class="credential">Credential ID: tbi23F48tciqyMsZj</p>
-                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Red%20Bull/GzGKNYQhYqhRB4z9G_Red%20Bull_tbi23F48tciqyMsZj_1699424857787_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Red%20Bull/GzGKNYQhYqhRB4z9G_Red%20Bull_tbi23F48tciqyMsZj_1699424857787_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <style>
-                .cert-grid {
-                    display: grid;
-                    gap: 2rem;
-                    padding: 2rem 0;
-                }
-
-                .cert-category {
-                    background: #ffffff;
-                    border-radius: 10px;
-                    padding: 2rem;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                    margin-bottom: 2rem;
-                }
-
-                .cert-category h3 {
-                    color: #1e40af;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    margin-bottom: 1.5rem;
-                    padding-bottom: 0.5rem;
-                    border-bottom: 2px solid #3b82f6;
-                }
-
-                .cert-list {
-                    display: grid;
-                    gap: 1.5rem;
-                }
-
-                .cert-item {
-                    background: #f8fafc;
-                    border-radius: 8px;
-                    padding: 1.5rem;
-                    border-left: 4px solid #2563eb;
-                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-                }
-
-                .cert-item h4 {
-                    color: #1e293b;
-                    font-size: 1.125rem;
-                    font-weight: 600;
-                    margin-bottom: 1rem;
-                }
-
-                .cert-item p {
-                    margin: 0.5rem 0;
-                    color: #334155;
-                    font-size: 1rem;
-                    line-height: 1.5;
-                }
-
-                .cert-item .issuer {
-                    font-weight: 600;
-                    color: #1e293b;
-                }
-
-                .cert-item .date {
-                    font-size: 0.9rem;
-                    color: #475569;
-                    font-weight: 500;
-                }
-
-                .cert-item .credential {
-                    font-family: 'Consolas', monospace;
-                    font-size: 0.9rem;
-                    color: #1e293b;
-                    background: #e2e8f0;
-                    padding: 0.5rem 0.75rem;
-                    border-radius: 4px;
-                    display: inline-block;
-                    margin: 0.5rem 0;
-                    border: 1px solid #cbd5e1;
-                }
-
-                .cert-modules {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-                    margin-top: 1rem;
-                }
-
-                .cert-modules span {
-                    background: #e2e8f0;
-                    color: #1e293b;
-                    padding: 0.5rem 1rem;
-                    border-radius: 9999px;
-                    font-size: 0.875rem;
-                    font-weight: 500;
-                    border: 1px solid #cbd5e1;
-                }
-
-                .cert-link {
-                    display: inline-flex;
-                    align-items: center;
-                    margin-top: 1rem;
-                    padding: 0.75rem 1.5rem;
-                    background-color: #2563eb;
-                    color: #ffffff !important;
-                    text-decoration: none;
-                    border-radius: 6px;
-                    font-size: 1rem;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-                }
-                
-                .cert-link:hover {
-                    background-color: #1d4ed8;
-                    transform: translateY(-1px);
-                    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-                    color: #ffffff !important;
-                }
-
-                .cert-link i {
-                    margin-right: 0.5rem;
-                    font-size: 1.1rem;
-                    color: #ffffff;
-                }
+            <!-- Certification styles consolidated in styles.css -->
 
                 .cert-link::before {
                     content: "🔗";
@@ -1335,49 +1110,7 @@
                     </a>
                 </div>
             </div>
-            <style>
-                .contact-info {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    max-width: 600px;
-                    margin: 0 auto;
-                    padding: 20px;
-                }
-                .contact-note {
-                    text-align: center;
-                    color: #1e293b;
-                    font-size: 1rem;
-                    margin-bottom: 0.5rem;
-                }
-                
-                .contact-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                    padding: 15px 20px;
-                    background: #ffffff;
-                    border-radius: 8px;
-                    text-decoration: none;
-                    color: #333;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-                
-                .contact-item:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-                }
-                
-                .contact-item i {
-                    font-size: 24px;
-                    color: #2563eb;
-                }
-                
-                .contact-item span {
-                    font-size: 16px;
-                }
-            </style>
+            <!-- Contact styles consolidated in styles.css -->
         </section>
     </main>
 
@@ -1387,6 +1120,7 @@
     </footer>
 
     <!-- Add this at the end of the body tag -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
     <div id="imageModal" class="modal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
@@ -1405,38 +1139,41 @@
                 }, 500);
             });
 
-            // Mobile Navigation
+            // Mobile Navigation (defensive)
             const navToggle = document.querySelector('.mobile-nav-toggle');
             const navLinks = document.querySelector('.nav-links');
 
             function setNavExpanded(isExpanded) {
+                if (!navToggle || !navLinks) return;
                 navToggle.setAttribute('aria-expanded', String(!!isExpanded));
                 if (isExpanded) navLinks.classList.add('active'); else navLinks.classList.remove('active');
             }
 
-            navToggle.addEventListener('click', () => {
-                setNavExpanded(!navLinks.classList.contains('active'));
-            });
-
-            // keyboard activation for hamburger (Enter / Space)
-            navToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
                     setNavExpanded(!navLinks.classList.contains('active'));
-                }
-            });
+                });
 
-            // Close mobile nav when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-                    setNavExpanded(false);
-                }
-            });
+                // keyboard activation for hamburger (Enter / Space)
+                navToggle.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setNavExpanded(!navLinks.classList.contains('active'));
+                    }
+                });
 
-            // Prevent closing when clicking inside nav
-            navLinks.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
+                // Close mobile nav when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                        setNavExpanded(false);
+                    }
+                });
+
+                // Prevent closing when clicking inside nav
+                navLinks.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
 
             // Smooth Scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1473,20 +1210,22 @@
 
             // Back to Top Button
             const backToTop = document.querySelector('.back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
                 });
-            });
+
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
 
             // Lazy Loading Images
             const images = document.querySelectorAll('.project-image');
@@ -1509,44 +1248,46 @@
 
             // Modal functionality (existing code)
             const modal = document.getElementById('imageModal');
-            const modalImage = modal.querySelector('.modal-image');
-            const modalClose = modal.querySelector('.modal-close');
+            const modalImage = modal ? modal.querySelector('.modal-image') : null;
+            const modalClose = modal ? modal.querySelector('.modal-close') : null;
 
-            modalClose.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
+            if (modal && modalClose && modalImage) {
+                modalClose.addEventListener('click', () => {
                     modal.classList.remove('active');
-                }
-            });
+                });
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    modal.classList.remove('active');
-                }
-            });
-
-            document.querySelectorAll('.project-image-container').forEach(container => {
-                // click to open modal (only when an <img> exists)
-                container.addEventListener('click', () => {
-                    const img = container.querySelector('img');
-                    if (img && img.src) {
-                        modalImage.src = img.src;
-                        modalImage.alt = img.alt || 'Project image';
-                        modal.classList.add('active');
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
                     }
                 });
 
-                // keyboard activation (Enter / Space)
-                container.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        container.click();
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        modal.classList.remove('active');
                     }
                 });
-            });
+
+                document.querySelectorAll('.project-image-container').forEach(container => {
+                    // click to open modal (only when an <img> exists)
+                    container.addEventListener('click', () => {
+                        const img = container.querySelector('img');
+                        if (img && img.src) {
+                            modalImage.src = img.src;
+                            modalImage.alt = img.alt || 'Project image';
+                            modal.classList.add('active');
+                        }
+                    });
+
+                    // keyboard activation (Enter / Space)
+                    container.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            container.click();
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>

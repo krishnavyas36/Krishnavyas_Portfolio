@@ -46,6 +46,33 @@ main {
     letter-spacing: 0.1px;
 }
 
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(37,99,235,0.18);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 220ms var(--transition), transform 220ms var(--transition);
+    z-index: 1200;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Header Styles */
 header {
     position: fixed;
@@ -409,6 +436,29 @@ nav {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+/* Thumbnail for projects without images */
+.project-thumb {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(14,165,233,0.03));
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(37,99,235,0.06);
+}
+
+.project-thumb-inner {
+    font-size: 2.25rem;
+}
+
+@media (min-width: 768px) {
+    .project-thumb {
+        height: 180px;
+    }
 }
 
 .project-card.featured {

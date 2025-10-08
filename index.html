@@ -1,22 +1,27 @@
-    <!-- Styles are consolidated in styles.css -->
-            color: #ffffff;
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Krishnavyas Desugari | Portfolio</title>
+    <meta name="description" content="Data analyst and product strategist delivering BI dashboards, machine learning prototypes, and operational automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Skip Link for Accessibility -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
-    <!-- Loading Animation -->
-    <div class="loader-wrapper">
+    <div class="loader-wrapper" aria-hidden="true">
         <div class="loader"></div>
     </div>
 
-    <!-- Header Section -->
     <header>
         <nav role="navigation" aria-label="Main navigation">
             <a class="logo" href="#home" aria-label="Home">KVD</a>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="mobile-nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
             <ul class="nav-links">
@@ -24,29 +29,59 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#honors">Honors</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-            <!-- Certification styles consolidated in styles.css -->
-                                <li>Developed normalized database schema with optimized indexes and constraints</li>
-                                <li>Implemented transaction management for concurrent booking operations</li>
-                                <li>Created stored procedures and triggers for automated business rules</li>
-                                <li>Built reporting system for revenue tracking and occupancy analytics</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span>SQL</span>
-                                <span>DBMS</span>
-                                <span>ER Modeling</span>
-                                <span>Draw.io</span>
-                                <span>Stored Procedures</span>
-                                <span>Transaction Management</span>
-                            </div>
-                        </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="home" class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <p class="achievements">BI dashboards · ML prototypes · Operations automation</p>
+                <h1 id="hero-heading">Hi, I'm <span class="highlight">Krishnavyas Desugari</span></h1>
+                <p class="subtitle">Data analyst and product-focused technologist turning complex datasets into decisions for universities, startups, and enterprise teams.</p>
+                <a class="cta-button" href="#projects">Explore the portfolio</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I combine business operations, analytics, and product research to help teams ship insights that stick. From AI security reviews to 500+ Chegg solutions, my work focuses on clarity, repeatability, and measurable impact.</p>
+                    <ul class="experience-list">
+                        <li>Translate ambiguous questions into dashboards adopted by WalletGyde, California State University – Long Beach, and BSC &amp; A Partners.</li>
+                        <li>Blend BI tooling, statistical modeling, and automation to speed up planning cycles and improve data quality.</li>
+                        <li>Partner with cross-functional stakeholders, turning feedback loops into documentation, enablement, and scalable playbooks.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="about resume-overview">
+            <h2>Resume Snapshot</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Recent highlights include boosting KPI accessibility by 40%, driving a 50% lift in analytics adoption, and cutting procurement lags by 30% for campus operations. I pair secure AI data pipelines with human-centered enablement to keep insights actionable.</p>
+                    <ul class="experience-list">
+                        <li>Implemented forecasting and anomaly detection routines that reduced discrepancies by 25% across procurement workflows.</li>
+                        <li>Coordinated Agile cadences for cross-functional teams, covering backlog grooming, user acceptance, and stakeholder onboarding.</li>
+                        <li>Documented security controls and analytics standards to support repeatable delivery across education, fintech, and consulting contexts.</li>
+                    </ul>
+                    <div class="resume-actions">
+                        <a class="cta-button" href="https://linkedin.com/in/krishnavyas-desugari-55752319b" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+                        <a class="cta-button outline" href="#contact">Request my resume</a>
                     </div>
                 </div>
             </div>
+        </section>
 
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
             <div class="project-category">
                 <h3>Business Intelligence & Analytics</h3>
                 <div class="project-grid">
@@ -157,7 +192,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">📁</div>
+                            <div class="project-thumb-inner">YT</div>
                         </div>
                         <div class="project-info">
                             <h4>YouTube Channels Performance Analysis</h4>
@@ -182,7 +217,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">📊</div>
+                            <div class="project-thumb-inner">AI</div>
                         </div>
                         <div class="project-info">
                             <h4>AI Logistics Optimization Agent</h4>
@@ -219,7 +254,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🤖</div>
+                            <div class="project-thumb-inner">WEDM</div>
                         </div>
                         <div class="project-info">
                             <h4>WEDM Parameter Optimization Study</h4>
@@ -242,7 +277,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🔬</div>
+                            <div class="project-thumb-inner">BIG</div>
                         </div>
                         <div class="project-info">
                             <h4>Big Data Analytics: Value & Limitations</h4>
@@ -258,7 +293,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">📚</div>
+                            <div class="project-thumb-inner">SC</div>
                         </div>
                         <div class="project-info">
                             <h4>COVID-19 Supply Chain Study</h4>
@@ -279,7 +314,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🧾</div>
+                            <div class="project-thumb-inner">JOB</div>
                         </div>
                         <div class="project-info">
                             <h4>Daily Job Tracker</h4>
@@ -305,7 +340,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🤖</div>
+                            <div class="project-thumb-inner">BOT</div>
                         </div>
                         <div class="project-info">
                             <h4>Automated Data Entry & Form Submission Tool</h4>
@@ -327,7 +362,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">💰</div>
+                            <div class="project-thumb-inner">FIN</div>
                         </div>
                         <div class="project-info">
                             <h4>Budget & Expenses Tracker App</h4>
@@ -356,7 +391,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🧭</div>
+                            <div class="project-thumb-inner">CHAIN</div>
                         </div>
                         <div class="project-info">
                             <h4>TrustChain — AI & Blockchain Supply Chain Verification</h4>
@@ -378,7 +413,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🚚</div>
+                            <div class="project-thumb-inner">AI</div>
                         </div>
                         <div class="project-info">
                             <h4>AI Logistics Optimization Agent</h4>
@@ -408,7 +443,7 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🧠</div>
+                            <div class="project-thumb-inner">CV</div>
                         </div>
                         <div class="project-info">
                             <h4>Facial Expression Recognition — Emotion Analysis</h4>
@@ -432,7 +467,7 @@
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🔬</div>
+                            <div class="project-thumb-inner">NLP</div>
                         </div>
                         <div class="project-info">
                             <h4>Real-Time News Popularity Forecasting</h4>
@@ -461,60 +496,57 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🚕</div>
+                            <div class="project-thumb-inner">UX</div>
                         </div>
                         <div class="project-info">
                             <h4>Taxi Booking Wireframe Application</h4>
                             <p class="project-date">Jan 2025</p>
-                            <p class="project-description">Wireframe prototype for a taxi booking app emphasizing fare estimation, real-time tracking, and driver ratings; designed in Figma/JustMind.</p>
+                            <p class="project-description">Wireframe prototype for a taxi booking app emphasizing fare estimation, real-time tracking, and driver ratings; designed in Figma and JustInMind.</p>
                             <ul class="project-features">
                                 <li>Interactive prototypes with usability focus</li>
                                 <li>User research and competitor analysis</li>
                                 <li>Iterative design refinements based on feedback</li>
                             </ul>
-+                        
+                        </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">🛠️</div>
+                            <div class="project-thumb-inner">PM</div>
                         </div>
                         <div class="project-info">
-                            <h4>Exide DTSC Clean-Up — Project Management App</h4>
-                            <p class="project-date">Aug 2024 – Dec 2024</p>
+                            <h4>Exide DTSC Clean-Up &ndash; Project Management App</h4>
+                            <p class="project-date">Aug 2024 &ndash; Dec 2024</p>
                             <p class="project-description">Acted as Product Owner for a cleanup-tracking web app; led 5+ sprints and delivered with high stakeholder satisfaction.</p>
                             <ul class="project-features">
                                 <li>Sprint planning and stakeholder coordination</li>
                                 <li>Delivered reporting and tracking dashboards</li>
                                 <li>Achieved 95% on-time delivery per stakeholder acceptance</li>
                             </ul>
-+                        
+                        </div>
                     </div>
-+
+
                     <div class="project-card">
                         <div class="project-thumb" aria-hidden="true">
-                            <div class="project-thumb-inner">📇</div>
-+                        </div>
-+
+                            <div class="project-thumb-inner">CRM</div>
+                        </div>
                         <div class="project-info">
                             <h4>Contacts App</h4>
-                            <p class="project-date">Aug 2023 – Oct 2023</p>
+                            <p class="project-date">Aug 2023 &ndash; Oct 2023</p>
                             <p class="project-description">A CRUD-based contacts management application built with Django to efficiently create, read, update, and delete contacts.</p>
                             <ul class="project-features">
                                 <li>User-friendly interface for contact operations</li>
                                 <li>Backend implemented in Django with RESTful patterns</li>
                                 <li>Search and filtering capabilities</li>
-+                            </ul>
-+                            <div class="project-links">
-+                                <a href="https://github.com/krishnavyas36/Krishna_vyas" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
-+                            </div>
-+                        </div>
-+                    </div>
-+                </div>
-+            </div>
-+
-         </section>
-*** End Patch
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/krishnavyas36/Krishna_vyas" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- Honors & Awards Section -->
@@ -941,31 +973,6 @@
                 </div>
             </div>
 
-            <!-- Certification styles consolidated in styles.css -->
-
-                .cert-link::before {
-                    content: "🔗";
-                    margin-right: 0.5rem;
-                    font-size: 1.1rem;
-                    color: #ffffff;
-                }
-
-                @media (min-width: 768px) {
-                    .cert-grid {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                }
-
-                @media (max-width: 767px) {
-                    .cert-category {
-                        padding: 1.5rem;
-                    }
-                    
-                    .cert-item {
-                        padding: 1.25rem;
-                    }
-                }
-            </style>
         </section>
 
         <!-- Skills Section (moved out of About) -->
@@ -1110,7 +1117,6 @@
                     </a>
                 </div>
             </div>
-            <!-- Contact styles consolidated in styles.css -->
         </section>
     </main>
 
@@ -1186,7 +1192,11 @@
                             block: 'start'
                         });
                         // Close mobile nav if open
-                        navLinks.classList.remove('active');
+                        if (typeof setNavExpanded === 'function') {
+                            setNavExpanded(false);
+                        } else if (navLinks) {
+                            navLinks.classList.remove('active');
+                        }
                     }
                 });
             });

@@ -286,6 +286,17 @@ nav {
     transform: translateY(-2px);
 }
 
+.cta-button.outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.cta-button.outline:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
 .achievements {
     font-size: 1.2rem;
     color: var(--primary-color);
@@ -316,6 +327,22 @@ nav {
     margin: 0 auto;
 }
 
+.resume-overview {
+    background: var(--background);
+}
+
+.resume-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.resume-actions .cta-button {
+    min-width: 200px;
+}
+
 .experience-list {
     margin: 1.5rem 0;
     padding-left: 1.5rem;
@@ -327,7 +354,7 @@ nav {
 }
 
 .experience-list li::before {
-    content: "▹";
+    content: "\2022";
     position: absolute;
     left: -1.5rem;
     color: var(--primary-color);
@@ -536,7 +563,7 @@ nav {
 }
 
 .project-features li::before {
-    content: "▹";
+    content: "\2022";
     position: absolute;
     left: -1.2rem;
     color: var(--primary-color);
@@ -1078,7 +1105,7 @@ footer {
 }
 
 .experience-list li::before {
-    content: "▹";
+    content: "\2022";
     position: absolute;
     left: -1.2rem;
     color: var(--primary-color);
@@ -1141,7 +1168,7 @@ footer {
 }
 
 .simulation-list li::before {
-    content: "▹";
+    content: "\2022";
     position: absolute;
     left: -1.2rem;
     color: var(--primary-color);

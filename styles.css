@@ -1165,6 +1165,31 @@ footer {
     color: white;
 }
 
+.honor-links {
+    margin-top: 1.5rem;
+}
+
+.honor-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.honor-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.honor-link i {
+    font-size: 1rem;
+}
+
 @media (max-width: 768px) {
     .honor-header {
         flex-direction: column;
